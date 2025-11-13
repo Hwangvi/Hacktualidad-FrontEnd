@@ -1,0 +1,36 @@
+<div class="profile-container">
+  <div *ngIf="userData" class="profile-hacker-card">
+
+    <h1 class="glitch" data-text="PERFIL DE USUARIO">PERFIL DE USUARIO</h1>
+
+    <div class="profile-info">
+      <div class="info-row">
+        <span class="label">// ID de Sesión:</span>
+        <span class="value">{{ userData.userId }}</span>
+      </div>
+      <div class="info-row">
+        <span class="label">// Alias:</span>
+        <span class="value">{{ userData.name }} {{ userData.surname }}</span>
+      </div>
+      <div class="info-row">
+        <span class="label">// Email de Contacto:</span>
+        <span class="value">{{ userData.email }}</span>
+      </div>
+      <div class="info-row">
+        <span class="label">// Nivel de Acceso:</span>
+        <span class="value">{{ userData.role }}</span>
+      </div>
+    </div>
+
+    <hr class="separator">
+
+    <button class="btn-modify" (click)="onModifyData()">
+      Modificar Datos
+    </button>
+
+  </div>
+
+  <div *ngIf="!userData" class="loading-message">
+    <p>Cargando datos del perfil...</p>
+  </div>
+</div>

@@ -1,0 +1,18 @@
+<div *ngIf="adminData" class="profile-container admin-profile">
+  <h1>Panel de Administrador</h1>
+  <div class="profile-card">
+    <h2>Bienvenido, {{ adminData.name }}</h2>
+    <div class="profile-info">
+      <p><strong>ID de Usuario:</strong> {{ adminData.userId }}</p>
+      <p><strong>Email:</strong> {{ adminData.email }}</p>
+      <p><strong>Rol:</strong> <span class="role-admin">{{ adminData.role }}</span></p>
+    </div>
+    <div class="admin-actions">
+      <p>Aquí puedes añadir herramientas de administración.</p>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="!adminData">
+  <p>No se pudieron cargar los datos del perfil de administrador.</p>
+</div>

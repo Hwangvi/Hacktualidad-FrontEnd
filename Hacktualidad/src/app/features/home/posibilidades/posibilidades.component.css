@@ -1,0 +1,116 @@
+.posibilidades-container {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  width: 100%;
+  padding: 0 20px;
+  box-sizing: border-box;
+  background-color: #000000;
+}
+
+h1{
+  align-items: center;
+  text-align: center;
+  font-family: 'BadSignal';
+  font-size: 3rem;
+  margin-top: 40px;
+  color: #e0f2f1;
+}
+
+.posibilidad-card {
+  display: flex;
+  align-items: center;
+  width: 70%;
+  min-height: 250px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+}
+
+.posibilidad-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+}
+
+#foro, #noticias {
+  align-self: flex-start;
+}
+
+#venta {
+  align-self: flex-end;
+  flex-direction: row-reverse;
+  background: linear-gradient(to left, #e0f2f1, #ffffff);
+}
+#noticias{
+  margin-bottom: 20px;
+}
+
+.posibilidad-card img {
+  margin-left: 20px;
+  margin-right: 20px;
+  width: 300px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 20px;
+}
+
+.posibilidad-card .card-content {
+  padding: 10px 30px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+
+#venta .card-content {
+  text-align: right;
+}
+
+.posibilidad-card h3 {
+  align-items: center;
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 2.5rem;
+  color: #2c3e50;
+  margin-top: -30px;
+  font-family: 'BadSignal'
+}
+
+.posibilidad-card p {
+  margin-bottom: 15px;
+  color: #555;
+  line-height: 1.6;
+  font-size: 20px;
+  text-align: center;
+  font-family: 'BadSignal';
+}
+.hacking{
+  color: #1d9ab9;
+}
+
+.posibilidad-card .card-link {
+  display: inline-block;
+  background-color: #007bff;
+  color: #ffffff;
+  padding: 12px 24px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 0.9rem;
+  text-align: center;
+  width: 15vh;
+  align-self: center;
+  margin-top: auto;
+  box-shadow: 0 4px 10px rgba(0, 123, 255, 0.3);
+  transition: all 0.3s ease;
+}
+
+.posibilidad-card .card-link:hover {
+  background-color: #0056b3;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(0, 123, 255, 0.4);
+}
+
+

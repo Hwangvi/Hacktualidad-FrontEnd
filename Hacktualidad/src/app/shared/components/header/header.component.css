@@ -1,0 +1,116 @@
+
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 70px;
+  background: rgba(31, 31, 31, 0.85);
+  backdrop-filter: blur(50px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 2rem;
+  z-index: 1000;
+  box-sizing: border-box;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  width: 50%;
+  justify-content: center;
+}
+
+.logo img {
+  width: 180px;
+  height: 60px;
+}
+
+.logo h1 {
+  font-family: "BadSignal", sans-serif;
+  font-style: italic;
+  font-size: 3.8rem;
+  margin-left: 20px;
+}
+.hack{
+  color : #1d9ab9;
+}
+.tualidad{
+  color: red
+}
+
+.others {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  width: 50%;
+}
+
+.others nav {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.others a {
+  position: relative;
+  color: white;
+  text-decoration: none;
+  font-family: 'BadSignal', sans-serif;
+  font-size: 2.1rem;
+  transition: color 0.3s ease;
+}
+
+.others a:hover {
+  color: red;
+}
+
+
+@media (max-width: 492px) {
+  header {
+    height: 60px;
+    padding: 0 0.8rem;
+    justify-content: space-between;
+  }
+
+  .logo, .others {
+    width: auto;
+  }
+
+  .logo h1 {
+    font-size: 1.3rem;
+  }
+
+  .logo img {
+    width: 30px;
+    height: 30px;
+  }
+
+  .others {
+    gap: 1rem;
+    justify-content: flex-end;
+  }
+
+  .others nav {
+    gap: 0.8rem;
+  }
+
+  .others a {
+    font-size: 0.9rem;
+  }
+
+  .user-actions {
+    gap: 8px;
+  }
+
+  .profile-avatar {
+    width: 28px;
+    height: 28px;
+  }
+
+  .logout-button i {
+    font-size: 18px;
+  }
+}
