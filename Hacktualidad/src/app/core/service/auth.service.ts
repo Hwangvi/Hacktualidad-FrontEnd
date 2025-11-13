@@ -23,7 +23,8 @@ export class AuthService {
   }
 
   login(credentials: any): Observable<User> {
-    return this.http.post<User>(`${this.apiUrl}/login`, credentials).pipe(
+
+    return this.http.post<User>(`${this.apiUrl}/login`, credentials, { withCredentials: true }).pipe(
       tap(user => {
         this.currentUserSubject.next(user);
       })

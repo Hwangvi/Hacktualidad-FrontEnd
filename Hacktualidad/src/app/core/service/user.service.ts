@@ -27,7 +27,7 @@ export class UserService {
   }
 
   updateUser(id: number, userData: UserUpdateRequest): Observable<User> {
-    return this.http.put<User>(`${this.apiUrl}/${id}`, userData);
+    return this.http.put<User>(`${this.apiUrl}/${id}`, userData, { withCredentials: true });
   }
 
 }

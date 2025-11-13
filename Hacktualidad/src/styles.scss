@@ -100,3 +100,25 @@ footer {
 .hacker-popup .swal2-timer-progress-bar {
   background: #00ff00 !important;
 }
+
+.hacker-popup .hacker-error-button {
+  background-color: transparent !important;
+  border: 2px solid #ff3333 !important;
+  color: #ff3333 !important;
+  font-family: 'Share Tech Mono', monospace;
+  transition: all 0.3s ease !important;
+  box-shadow: none !important;
+}
+
+.hacker-popup .hacker-error-button:hover {
+  background-color: #ff3333 !important;
+  color: #0a0a0a !important;
+}
+
+.hacker-popup .swal2-icon.swal2-error {
+  border-color: #ff3333 !important;
+}
+.hacker-popup .swal2-icon.swal2-error .swal2-x-mark-line-left,
+.hacker-popup .swal2-icon.swal2-error .swal2-x-mark-line-right {
+  background-color: #ff3333 !important;
+}
