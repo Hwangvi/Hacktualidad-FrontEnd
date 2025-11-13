@@ -16,9 +16,9 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
-  register(userData: UserRegister): Observable<User> {
+  register(formData: FormData): Observable<User> {
     const registerUrl = `${this.apiUrl}/register`;
-    return this.http.post<User>(registerUrl, userData);
+    return this.http.post<User>(registerUrl, formData);
   }
 
   login(credentials: any): Observable<any> {

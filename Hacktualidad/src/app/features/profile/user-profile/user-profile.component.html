@@ -1,7 +1,21 @@
 <div class="profile-container">
   <div *ngIf="userData" class="profile-hacker-card">
 
-    <h1 class="glitch" data-text="PERFIL DE USUARIO">PERFIL DE USUARIO</h1>
+    <div class="profile-header">
+      <div class="profile-picture-wrapper">
+
+        <img *ngIf="userData.photo"
+             [src]="'http://localhost:8080/uploads/' + userData.photo"
+             alt="Foto de perfil de {{ userData.name }}">
+
+        <img *ngIf="!userData.photo"
+             src="/assets/images/default-avatar.png"
+             alt="Avatar por defecto">
+      </div>
+
+
+      <h1 class="glitch" data-text="PERFIL DE USUARIO">PERFIL DE USUARIO</h1>
+    </div>
 
     <div class="profile-info">
       <div class="info-row">

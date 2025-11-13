@@ -122,3 +122,50 @@ button[type="submit"]:hover {
   text-decoration: underline;
   text-shadow: 0 0 5px #3f3;
 }
+
+.file-upload-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.file-upload-wrapper input[type="file"] {
+  display: none;
+}
+
+.btn-file-upload {
+  display: inline-block;
+  padding: 12px 20px;
+  background-color: transparent;
+  border: 2px solid #00ff00;
+  border-radius: 4px;
+  color: #00ff00;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+.btn-file-upload:hover {
+  background-color: #00ff00;
+  color: #0a0a0a;
+  box-shadow: 0 0 15px rgba(0, 255, 0, 0.6);
+}
+
+.image-preview {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 2px solid #aaffaa;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}

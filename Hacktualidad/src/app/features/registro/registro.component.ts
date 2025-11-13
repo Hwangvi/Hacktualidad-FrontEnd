@@ -26,6 +26,9 @@ export class RegistroComponent implements OnInit {
     confirmPassword: ''
   };
 
+  public selectedFile: File | null = null;
+  public imagePreview: string | ArrayBuffer | null = null;
+
   constructor(
     private router: Router,
     private userService: UserService
@@ -33,23 +36,43 @@ export class RegistroComponent implements OnInit {
 
   ngOnInit() {
   }
-  public onSubmit(): void {
-    if (this.user.password !== this.user.confirmPassword) {
-      this.showErrorAlert('Las contraseñas no coinciden. Por favor, verifica.');
-      return;
+  onFileSelected(event: any): void {
+    if (event.target.files && event.target.files[0]) {
+      const file = event.target.files[0];
+      this.selectedFile = file;
+
+      const reader = new FileReader();
+      reader.onload = () => {
+        this.imagePreview = reader.result;
+      };
+      reader.readAsDataURL(file);
     }
-
-    this.userService.register(this.user).subscribe({
-      next: (response) => {
-        this.showSuccessAlert();
-      },
-      error: (err) => {
-        const errorMessage = err.error || 'No se pudo completar el registro. Inténtalo de nuevo.';
-        this.showErrorAlert(errorMessage);
-      }
-    });
-
   }
+
+public onSubmit(): void {
+  if (this.user.password !== this.user.confirmPassword) {
+    this.showErrorAlert('Las contraseñas no coinciden. Por favor, verifica.');
+    return;
+  }
+  const formData = new FormData();
+  formData.append('user', JSON.stringify(this.user));
+
+  if (this.selectedFile) {
+    formData.append('file', this.selectedFile, this.selectedFile.name);
+  }
+
+  this.userService.register(formData).subscribe({
+    next: (response) => {
+      this.showSuccessAlert();
+    },
+    error: (err) => {
+      const errorMessage = err.error || 'No se pudo completar el registro. Inténtalo de nuevo.';
+      this.showErrorAlert(errorMessage);
+    }
+  });
+}
+
+
 
   showSuccessAlert() {
     Swal.fire({
