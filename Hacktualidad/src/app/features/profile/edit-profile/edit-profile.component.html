@@ -16,12 +16,21 @@
       </div>
       <div class="form-group">
         <label for="phone">// Teléfono</label>
-        <input type="number" id="phone" name="phone" [(ngModel)]="editableUser.phone">
+        <input type="tel" id="phone" name="phone" [(ngModel)]="editableUser.phone">
+      </div>
+
+      <div class="form-group file-upload-wrapper">
+        <label for="photo" class="btn-file-upload">// Seleccionar Nueva Foto de Perfil</label>
+        <input type="file" id="photo" name="photo" (change)="onFileSelected($event)">
+        <div *ngIf="imagePreview" class="image-preview">
+          <img [src]="imagePreview" alt="Previsualización de imagen">
+        </div>
       </div>
       <div class="form-actions">
         <button type="button" class="btn-cancel" (click)="onCancel()">Cancelar</button>
         <button type="submit" class="btn-save" [disabled]="!profileForm.valid">Guardar Cambios</button>
       </div>
+
       <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
     </form>
   </div>

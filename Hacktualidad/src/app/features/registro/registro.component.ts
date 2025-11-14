@@ -36,6 +36,7 @@ export class RegistroComponent implements OnInit {
 
   ngOnInit() {
   }
+
   onFileSelected(event: any): void {
     if (event.target.files && event.target.files[0]) {
       const file = event.target.files[0];
@@ -71,9 +72,6 @@ public onSubmit(): void {
     }
   });
 }
-
-
-
   showSuccessAlert() {
     Swal.fire({
       title: '¡REGISTRO COMPLETADO!',
