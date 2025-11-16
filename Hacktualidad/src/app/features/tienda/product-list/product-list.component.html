@@ -1,0 +1,19 @@
+<div class="product-grid">
+  <a class="product-card"
+     *ngFor="let product of products; let i = index"
+     [routerLink]="['/tienda', product.productId]"
+     [style.--i]="i">
+
+    <div class="card-media">
+      <img [src]="'http://localhost:8080/uploads/' + product.photo" alt="{{ product.name }}" class="product-image">
+    </div>
+
+    <div class="card-content">
+      <span class="category-tag" *ngIf="product.category">{{ product.category.name }}</span>
+
+      <h3 class="product-name">{{ product.name }}</h3>
+
+      <p class="product-price">{{ product.price | currency:'EUR' }}</p>
+    </div>
+  </a>
+</div>

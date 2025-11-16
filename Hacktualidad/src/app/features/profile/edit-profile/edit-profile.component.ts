@@ -43,19 +43,15 @@ export class EditProfileComponent implements OnInit {
   onFileSelected(event: any): void {
     if (event.target.files && event.target.files[0]) {
       const file = event.target.files[0];
-      this.selectedFile = file; // Guardamos el archivo para enviarlo en onSubmit
+      this.selectedFile = file;
 
-      // --- LÓGICA PARA LA PREVISUALIZACIÓN INSTANTÁNEA ---
-      // 1. Crear un lector de ficheros del navegador
+
       const reader = new FileReader();
-
-      // 2. Definir qué hacer cuando el fichero se haya leído por completo
       reader.onload = () => {
-        // Asignamos el resultado de la lectura a nuestra variable de previsualización
+
         this.imagePreview = reader.result;
       };
 
-      // 3. Iniciar la lectura del fichero. Cuando termine, se ejecutará el 'onload'
       reader.readAsDataURL(file);
     }
   }
