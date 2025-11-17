@@ -1,8 +1,4 @@
-/* =================================================================== */
-/* === ESTILOS PARA EL FORMULARIO DE EDICIÓN DE PRODUCTOS          === */
-/* === Adaptado desde los formularios de Perfil y Creación         === */
-/* =================================================================== */
-
+/* Importaciones de fuentes */
 @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono,monospace');
 @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&display=swap');
 
@@ -15,7 +11,7 @@
 
 .edit-form-card {
   width: 100%;
-  max-width: 700px;
+  max-width: 800px;
   background-color: rgba(10, 25, 10, 0.3);
   border: 1px solid #00ff00;
   border-radius: 8px;
@@ -23,14 +19,18 @@
   box-shadow: 0 0 20px rgba(0, 255, 0, 0.4), inset 0 0 10px rgba(0, 255, 0, 0.3);
   color: #00ff00;
   font-family: 'Share Tech Mono', monospace;
+  margin-top: 100px;
+  margin-bottom: 40px;
 }
 
 .glitch {
+  margin-bottom: 30px;
+  color: #0f0;
+  font-weight: 600;
   font-size: 2.5rem;
   text-align: center;
-  position: relative;
   text-transform: uppercase;
-  margin-bottom: 30px;
+  animation: flicker 1.5s infinite alternate;
 }
 
 .form-group {
@@ -58,14 +58,16 @@ select {
   font-family: inherit;
   font-size: 1.1em;
   transition: all 0.3s ease;
+  caret-color: #00ff00;
 }
 
 input:focus,
 textarea:focus,
 select:focus {
   outline: none;
+  border-color: #3f3;
   background-color: rgba(0, 255, 0, 0.1);
-  box-shadow: 0 0 15px rgba(0, 255, 0, 0.5);
+  box-shadow: 0 0 15px rgba(0, 255, 0, 0.7);
 }
 
 textarea {
@@ -73,10 +75,46 @@ textarea {
   min-height: 120px;
 }
 
-select {
+.select-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.select-wrapper::after {
+  content: '▼';
+  font-size: 1.2rem;
+  color: #00ff00;
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  transform: translateY(-50%);
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+.select-wrapper:hover::after {
+  color: #aaffaa;
+  text-shadow: 0 0 8px #aaffaa;
+
+}
+
+.select-wrapper select {
+  padding-right: 30px;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
+}
+
+select option {
+  background-color: #051005;
+  color: #00ff00;
+  padding: 10px;
+  font-family: 'Fira Code', monospace;
+}
+
+.select-wrapper select option:hover {
+    background-color: #00ff00;
+    color: #0a0a0a;
 }
 
 .file-upload-wrapper {
@@ -179,38 +217,68 @@ select {
   padding: 10px;
 }
 
+.toggle-switch {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
 
-.glitch::before,
-.glitch::after {
-  content: attr(data-text);
+.toggle-switch input[type="checkbox"] {
+  height: 0;
+  width: 0;
+  visibility: hidden;
+}
+
+.toggle-switch .slider {
+  cursor: pointer;
+  width: 50px;
+  height: 26px;
+  background-color: #ff3333;
+  display: inline-block;
+  border-radius: 26px;
+  position: relative;
+  transition: background-color 0.2s;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.toggle-switch .slider:before {
+  content: "";
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(10, 25, 10, 0.3);
-  overflow: hidden;
+  height: 20px;
+  width: 20px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  border-radius: 50%;
+  transition: 0.2s;
 }
 
-.glitch::before {
-  left: 2px;
-  text-shadow: -1px 0 red;
-  animation: glitch-anim-1 2s linear infinite reverse;
+.toggle-switch input:checked + .slider {
+  background-color: #00ff00;
 }
 
-.glitch::after {
-  left: -2px;
-  text-shadow: -1px 0 blue;
-  animation: glitch-anim-2 2s linear infinite reverse;
+.toggle-switch input:checked + .slider:before {
+  transform: translateX(24px);
 }
 
-@keyframes glitch-anim-1 {
-  0% { clip: rect(42px, 9999px, 44px, 0); }
-  5% { clip: rect(12px, 9999px, 60px, 0); }
-  100% { clip: rect(50px, 9999px, 95px, 0); }
+.toggle-label {
+  color: #e0e0e0;
+  font-size: 1em;
 }
 
-@keyframes glitch-anim-2 {
-  0% { clip: rect(42px, 9999px, 44px, 0); }
-  100% { clip: rect(20px, 9999px, 85px, 0); }
+@keyframes flicker {
+  0%, 18%, 22%, 25%, 53%, 57%, 100% {
+    text-shadow:
+      0 0 4px #0f0,
+      0 0 11px #0f0,
+      0 0 19px #0f0,
+      0 0 40px #0a0,
+      0 0 80px #0a0,
+      0 0 90px #0a0,
+      0 0 100px #0a0,
+      0 0 150px #0a0;
+  }
+  20%, 24%, 55% {
+    text-shadow: none;
+  }
 }

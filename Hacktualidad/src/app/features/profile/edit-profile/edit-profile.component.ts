@@ -89,6 +89,16 @@ export class EditProfileComponent implements OnInit {
   }
 
   onCancel(): void {
-    this.router.navigate(['/profile/user']);
+    const currentUser = this.authService.currentUserValue;
+
+    if (currentUser) {
+      if (currentUser.role === 'ADMIN') {
+        this.router.navigate(['/profile/admin']);
+      } else {
+        this.router.navigate(['/profile/user']);
+      }
+    } else {
+      this.router.navigate(['/login']);
+    }
   }
 }

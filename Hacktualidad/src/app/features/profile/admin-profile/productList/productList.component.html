@@ -2,33 +2,29 @@
   <div class="header-card">
     <h1 class="glitch" data-text="ADMINISTRAR PRODUCTOS">ADMINISTRAR PRODUCTOS</h1>
   </div>
+  <div *ngIf="(products$ | async) as products; else noProducts">
+    <div class="product-list-vertical" *ngIf="products.length > 0; else noProducts">
+      <div *ngFor="let product of products" class="product-admin-card">
 
-  <div class="product-list-vertical" *ngIf="products.length > 0; else noProducts">
-    <div *ngFor="let product of products" class="product-admin-card">
-
-
-      <div class="card-media">
-        <img [src]="'http://localhost:8080/uploads/' + product.photo" [alt]="product.name" class="product-image">
-      </div>
-
-      <!-- Contenido principal de la tarjeta -->
-      <div class="card-content">
-        <div class="product-info">
-          <h3 class="product-name">{{ product.name }}</h3>
-          <p class="product-description">{{ product.description | slice:0:100 }}...</p>
+        <div class="card-media">
+          <img [src]="'http://localhost:8080/uploads/' + product.photo" [alt]="product.name" class="product-image">
         </div>
 
-        <!-- Botones de acción -->
-        <div class="product-actions">
-          <a [routerLink]="['/profile/admin/products/edit', product.productId]" class="btn-action btn-edit">Editar</a>
-          <button (click)="onDeleteProduct(product.productId)" class="btn-action btn-delete">Borrar</button>
+        <div class="card-content">
+          <div class="product-info">
+            <h3 class="product-name">{{ product.name }}</h3>
+            <p class="product-description">{{ product.description | slice:0:100 }}...</p>
+          </div>
+
+          <div class="product-actions">
+            <a [routerLink]="['/profile/admin/products/edit', product.productId]" class="btn-action btn-edit">Editar</a>
+            <button (click)="onDeleteProduct(product.productId)" class="btn-action btn-delete">Borrar</button>
+          </div>
         </div>
       </div>
     </div>
-
   </div>
 
-  <!-- Plantilla para cuando no hay productos -->
   <ng-template #noProducts>
     <div class="no-products-message">
       <p>No se encontraron productos para mostrar.</p>

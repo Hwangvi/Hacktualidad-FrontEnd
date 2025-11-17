@@ -165,16 +165,15 @@ button[type="submit"]:hover {
   width: 100%;
 }
 
-/* 2. Flecha personalizada usando un pseudo-elemento */
 .select-wrapper::after {
-  content: '▼'; /* Puedes cambiarlo por '>'; '»'; etc. */
+  content: '▼';
   font-size: 1.2rem;
   color: #0f0;
   position: absolute;
   top: 50%;
   right: 15px;
   transform: translateY(-50%);
-  pointer-events: none; /* Permite hacer clic a través de la flecha */
+  pointer-events: none;
   transition: all 0.3s ease;
 }
 
@@ -183,10 +182,9 @@ button[type="submit"]:hover {
   text-shadow: 0 0 8px #3f3;
 }
 
-/* 3. Estilos base del <select> para que coincida con tus <input> */
 select {
   width: 100%;
-  padding: 12px 40px 12px 15px; /* Más padding a la derecha para no solapar la flecha */
+  padding: 12px 40px 12px 15px;
   border: 1px solid #0f0;
   border-radius: 4px;
   font-size: 1rem;
@@ -195,23 +193,19 @@ select {
   color: #0f0;
   font-family: 'Fira Code', monospace;
   transition: box-shadow 0.3s ease, border-color 0.3s ease;
-
-  /* La magia para ocultar la flecha por defecto */
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
 }
 
-/* 4. Estilo del <select> cuando está enfocado (focus) */
 select:focus {
   outline: none;
   border-color: #3f3;
   box-shadow: 0 0 10px rgba(0, 255, 0, 0.7);
 }
 
-/* 5. Estilo de las opciones del desplegable */
 select option {
-  background: #0a0a0a; /* Fondo negro para la lista desplegada */
+  background: #0a0a0a;
   color: #0f0;
   font-family: 'Fira Code', monospace;
   padding: 10px;

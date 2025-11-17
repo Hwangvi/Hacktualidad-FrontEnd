@@ -13,7 +13,7 @@ import Swal from 'sweetalert2';
   standalone: true,
   imports: [CommonModule, FormsModule],
   templateUrl: './productEdit.component.html',
-  styleUrls: ['./productEdit.component.css']
+  styleUrls: ['./productEdit.component.css'],
 })
 export class ProductEditComponent implements OnInit {
   editableProduct: Product | null = null;
@@ -24,29 +24,36 @@ export class ProductEditComponent implements OnInit {
 
   constructor(
     private productService: ProductService,
-    private route: ActivatedRoute,
     private categoryService: CategoryService,
+    private route: ActivatedRoute,
     private router: Router
   ) {}
 
+  ngOnInit(): void {
+    this.categoryService.getCategories().subscribe((data) => {
+      this.categories = data;
+    });
+
+    const productId = this.route.snapshot.paramMap.get('id');
+
+    if (productId) {
+      this.productService.getProductById(+productId).subscribe({
+        next: (product) => {
+          this.editableProduct = product;
+          if (product.photo) {
+            this.imagePreview = 'http://localhost:8080/uploads/' + product.photo;
+          }
+        },
+        error: (err) => {
+          console.error('Error al cargar el producto:', err);
+          this.errorMessage = 'No se pudo encontrar el producto solicitado.';
+        },
+      });
+    }
+  }
 
   compareCategories(c1: Category, c2: Category): boolean {
     return c1 && c2 ? c1.categoryId === c2.categoryId : c1 === c2;
-  }
-
-  ngOnInit(): void {
-    this.categoryService.getCategories().subscribe(data => {
-      this.categories = data;
-    });
-    const productId = this.route.snapshot.paramMap.get('id');
-    if (productId) {
-      this.productService.getProductById(+productId).subscribe(product => {
-        this.editableProduct = product;
-        if (product.photo) {
-          this.imagePreview = 'http://localhost:8080/uploads/' + product.photo;
-        }
-      });
-    }
   }
 
   onFileSelected(event: any): void {
@@ -62,25 +69,50 @@ export class ProductEditComponent implements OnInit {
   }
 
   onSubmit(): void {
-    if (!this.editableProduct) return;
+    if (!this.editableProduct || !this.editableProduct.category) {
+      this.errorMessage = 'Datos del producto o categoría incompletos.';
+      return;
+    }
+    this.errorMessage = null;
+
     const productUpdateData = {
       name: this.editableProduct.name,
       description: this.editableProduct.description,
       price: this.editableProduct.price,
-      stock: this.editableProduct.stock
+      stock: this.editableProduct.stock,
+      category: {
+        categoryId: this.editableProduct.category.categoryId,
+      },
+      active: this.editableProduct.active,
     };
+
     const formData = new FormData();
     formData.append('product', JSON.stringify(productUpdateData));
+
     if (this.selectedFile) {
       formData.append('photo', this.selectedFile, this.selectedFile.name);
     }
 
     this.productService.updateProduct(this.editableProduct.productId, formData).subscribe({
       next: () => {
-        Swal.fire('¡Actualizado!', 'El producto ha sido modificado.', 'success')
-           .then(() => this.router.navigate(['/profile/admin/products/list']));
+        Swal.fire({
+          title: '¡Actualizado!',
+          text: 'El producto ha sido modificado correctamente.',
+          icon: 'success',
+          timer: 2000,
+          showConfirmButton: false,
+        }).then(() => {
+          this.router.navigate(['/profile/admin/products/list']);
+        });
       },
-      error: (err) => this.errorMessage = 'No se pudo actualizar el producto.'
+      error: (err) => {
+        console.error('Error al actualizar el producto:', err);
+        if (err.status === 400) {
+          this.errorMessage = 'Los datos enviados son inválidos. Revisa el formulario.';
+        } else {
+          this.errorMessage = 'No se pudo actualizar el producto. Por favor, inténtalo de nuevo.';
+        }
+      },
     });
   }
 

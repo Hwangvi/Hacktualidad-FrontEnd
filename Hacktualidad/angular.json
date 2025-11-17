@@ -17,6 +17,11 @@
         "build": {
           "builder": "@angular/build:application",
           "options": {
+            "outputPath": "dist/Hacktualidad",
+            "index": "src/index.html",
+            "polyfills": [
+              "zone.js"
+            ],
             "browser": "src/main.ts",
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
@@ -81,9 +86,7 @@
                 "input": "public"
               }
             ],
-            "styles": [
-              "src/styles.scss"
-            ]
+            "styles": ["src/styles.scss"]
           }
         }
       }

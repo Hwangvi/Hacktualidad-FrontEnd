@@ -6,10 +6,9 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
 @Component({
-  selector: 'app-admin-panel', // Asegúrate de que este es el selector correcto
+  selector: 'app-admin-panel',
   templateUrl: './admin-panel.component.html',
   styleUrls: ['./admin-panel.component.css'],
-  standalone: true, // Asumo que es standalone por los imports
   imports: [CommonModule, RouterModule]
 })
 export class AdminPanelComponent implements OnInit {
@@ -38,7 +37,6 @@ export class AdminPanelComponent implements OnInit {
       cancelButtonColor: '#3085d6',
       confirmButtonText: 'Sí, ¡bórralo!',
       cancelButtonText: 'Cancelar'
-      // ... tus estilos de SweetAlert ...
     }).then((result) => {
       if (result.isConfirmed) {
         this.productService.deleteProduct(id).subscribe(() => {
@@ -49,6 +47,4 @@ export class AdminPanelComponent implements OnInit {
     });
   }
 
-  // El método openProductForm() ha sido eliminado porque ya no se usa aquí.
-  // La creación y edición se manejan en sus propios componentes/rutas.
 }
