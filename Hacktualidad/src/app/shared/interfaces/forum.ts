@@ -25,4 +25,5 @@ export interface Topic {
     topicId: number;
     topicName: string;
     topicDescription: string;
+    backgroundImage: string;
 }

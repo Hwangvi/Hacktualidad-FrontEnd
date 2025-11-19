@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ActivatedRoute, RouterLink, Router } from '@angular/router';
 import { ForumService } from '../../../core/service/forum.service';
 import { Post } from '../../../shared/interfaces/forum';
 import { CommonModule } from '@angular/common';
@@ -17,7 +17,8 @@ export class PostListComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private forumService: ForumService
+    private forumService: ForumService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -35,5 +36,9 @@ export class PostListComponent implements OnInit {
         }
       });
     }
+  }
+
+  goBack(): void {
+    this.router.navigate(['/forum']);
   }
 }

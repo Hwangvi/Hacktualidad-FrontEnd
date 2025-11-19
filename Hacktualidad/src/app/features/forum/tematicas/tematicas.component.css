@@ -79,6 +79,43 @@ h1 {
   transform: scale(1.1);
 }
 
+.grid-item {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  color: white;
+  min-height: 200px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.grid-item-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.3s ease;
+}
+
+.grid-item:hover .grid-item-overlay {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.grid-text {
+  z-index: 1;
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
 @media (max-width: 768px) {
   .grid-container {
 

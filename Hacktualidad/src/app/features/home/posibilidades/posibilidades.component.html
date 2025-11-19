@@ -6,7 +6,6 @@
     <div class="card-content">
       <h3>Foro de la comunidad</h3>
       <p>Un maravilloso foro donde podrás discutir todo tipo de Topics del mundo del <span class="hacking">hacking</span>. ¿Alguna vez has tenido dudas sobre este maravilloso mundo? ¡Entra e infórmate! </p>
-
       <a routerLink="/forum" class="card-link">Entrar al foro</a>
     </div>
   </div>
@@ -15,17 +14,19 @@
     <img src="/images/productos.jpg" alt="Imagen representativa de la tienda">
     <div class="card-content">
       <h3>Venta de Productos</h3>
-      <p>Todos los productos de Hacking al alcance de tu mano (y de tu bolsillo). <br>Explora nuestra tienda y encuentra lo que necesitas.</p>
+      <p>Todos los productos de Hacking al alcance de tu man
+
+        o (y de tu bolsillo). <br>Explora nuestra tienda y encuentra lo que necesitas.</p>
       <a routerLink="/tienda" class="card-link">Ir a la tienda</a>
     </div>
   </div>
 
-  <div id="noticias" class="posibilidad-card">
-    <img src="/images/noticias.jpg" alt="Imagen representativa de las noticias">
+  <div id="noticias" class="posibilidad-card" *ngIf="isLoggedIn">
+    <img src="/images/perfil.jpg" alt="Imagen representativa de las noticias">
     <div class="card-content">
-      <h3>Últimas Noticias</h3>
-      <p>Mantente al día con las novedades más importantes del sector de la informática <br> Estar informado ha dejado de ser una opcion a ser una obligación </p>
-      <a routerLink="/forum" class="card-link">Leer más</a>
+      <h3>Mi perfil</h3>
+      <p>Accede a tu perfil y modifica tus datos <br> Recuerda protegerlos, los hackers pueden estar en cualquier lado </p>
+      <a [routerLink]="profileLink" class="card-link">Ir a mi perfil</a>
     </div>
   </div>
 

@@ -1,17 +1,43 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { RouterLink } from "@angular/router";
+import { CommonModule } from '@angular/common';
+import { Subscription } from 'rxjs';
+import { AuthService } from './../../../core/service/auth.service';
+import { User } from '../../../shared/interfaces/User';
 
 @Component({
   selector: 'app-posibilidades',
   templateUrl: './posibilidades.component.html',
   styleUrls: ['./posibilidades.component.css'],
-  imports: [RouterLink]
+  imports: [CommonModule, RouterLink]
 })
-export class PosibilidadesComponent implements OnInit {
+export class PosibilidadesComponent implements OnInit, OnDestroy {
 
-  constructor() { }
+  isLoggedIn: boolean = false;
+  profileLink: string = '/login';
+  private userSubscription!: Subscription;
 
-  ngOnInit() {
+  constructor(private authService: AuthService) { }
+
+  ngOnInit(): void {
+    this.userSubscription = this.authService.currentUser$.subscribe((user: User | null) => {
+      if (user) {
+        this.isLoggedIn = true;
+        if (user.role === 'ADMIN') {
+          this.profileLink = '/profile/admin';
+        } else if (user.role === 'USER') {
+          this.profileLink = '/profile/user';
+        }
+      } else {
+        this.isLoggedIn = false;
+        this.profileLink = '/login';
+      }
+    });
   }
 
+  ngOnDestroy(): void {
+    if (this.userSubscription) {
+      this.userSubscription.unsubscribe();
+    }
+  }
 }

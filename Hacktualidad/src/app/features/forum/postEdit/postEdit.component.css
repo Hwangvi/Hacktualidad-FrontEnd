@@ -127,6 +127,55 @@ button[type='submit']:disabled {
   font-size: 1.2rem;
 }
 
+.form-actions {
+  display: flex;
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.btn-cancel, .btn-save {
+  flex-grow: 1;
+  padding: 12px;
+  border: 2px solid;
+  border-radius: 4px;
+  font-size: 1.1em;
+  font-family: 'Share Tech Mono', monospace;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-save {
+  background-color: transparent;
+  border-color: #00ff00;
+  color: #00ff00;
+}
+
+.btn-save:hover:not(:disabled) {
+  background-color: #00ff00;
+  color: #0a0a0a;
+  box-shadow: 0 0 20px rgba(0, 255, 0, 0.6);
+}
+
+.btn-save:disabled {
+  border-color: #444;
+  color: #444;
+  cursor: not-allowed;
+  background-color: transparent;
+  opacity: 0.5;
+}
+
+.btn-cancel {
+  background-color: transparent;
+  border-color: #ff3333;
+  color: #ff3333;
+}
+
+.btn-cancel:hover {
+  background-color: #ff3333;
+  color: #0a0a0a;
+}
+
 @keyframes flicker {
   0%,
   18%,

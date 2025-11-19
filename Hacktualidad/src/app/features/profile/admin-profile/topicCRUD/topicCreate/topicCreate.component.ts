@@ -1,75 +1,72 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
-import { ForumService } from '../../../../../core/service/forum.service';
+import { Router, RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import Swal from 'sweetalert2';
+import { ForumService } from '../../../../../core/service/forum.service';
+
+export interface TopicCreateRequest {
+  topicName: string;
+  topicDescription: string;
+}
 
 @Component({
   selector: 'app-topic-create',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [ CommonModule, FormsModule, RouterModule ],
   templateUrl: './topicCreate.component.html',
   styleUrls: ['./topicCreate.component.css']
 })
 export class TopicCreateComponent {
-  topicForm: FormGroup;
-  isSubmitting = false;
+
+  public topic: TopicCreateRequest = {
+    topicName: '',
+    topicDescription: ''
+  };
+
+  public selectedFile: File | null = null;
+  public imagePreview: string | ArrayBuffer | null = null;
 
   constructor(
-    private fb: FormBuilder,
-    private router: Router,
-    private forumService: ForumService
-  ) {
-    this.topicForm = this.fb.group({
-      topicName: ['', [Validators.required, Validators.minLength(3)]],
-      topicDescription: ['', [Validators.required, Validators.minLength(10)]]
-    });
+    private forumService: ForumService,
+    private router: Router
+  ) {}
+
+  onFileSelected(event: any): void {
+    const file = (event.target as HTMLInputElement)?.files?.[0];
+    if (file) {
+      this.selectedFile = file;
+      const reader = new FileReader();
+      reader.onload = () => { this.imagePreview = reader.result; };
+      reader.readAsDataURL(file);
+    }
   }
 
   onSubmit(): void {
-    if (this.topicForm.invalid) {
-      Swal.fire({
-        icon: 'warning',
-        title: 'Formulario incompleto',
-        text: 'Por favor, rellena todos los campos requeridos.',
-        background: '#0a110a',
-        color: '#9affb4',
-        confirmButtonColor: '#008f26'
-      });
-      return;
+    if (!this.selectedFile) {
+        Swal.fire('Error', 'Debes seleccionar una imagen de fondo.', 'error');
+        return;
     }
 
-    this.isSubmitting = true;
+    const formData = new FormData();
+    formData.append('topic', new Blob([JSON.stringify(this.topic)], { type: 'application/json' }));
+    formData.append('file', this.selectedFile, this.selectedFile.name);
 
-    this.forumService.createTopic(this.topicForm.value).subscribe({
-      next: (nuevaTematica) => {
-        this.isSubmitting = false;
+    this.forumService.createTopicWithPhoto(formData).subscribe({
+      next: () => {
         Swal.fire({
-          icon: 'success',
           title: '¡Temática Creada!',
-          text: `La temática "${nuevaTematica.topicName}" se ha creado correctamente.`,
-          timer: 2000,
-          timerProgressBar: true,
-          background: '#0a110a',
-          color: '#9affb4',
-        }).then(() => {
-          this.topicForm.reset();
-          this.router.navigate(['/forum']);
-        });
+          text: 'La nueva temática ha sido añadida con éxito.',
+          icon: 'success'
+        }).then(() => this.router.navigate(['/forum']));
       },
       error: (err) => {
-        this.isSubmitting = false;
-        Swal.fire({
-          icon: 'error',
-          title: '¡Oops... Hubo un error!',
-          text: 'No se pudo crear la temática. Por favor, inténtalo de nuevo más tarde.',
-          background: '#0a110a',
-          color: '#9affb4',
-          confirmButtonColor: '#ff3333'
-        });
-        console.error('Error al crear la temática:', err);
+        Swal.fire('Error', err.error.message || 'No se pudo crear la temática.', 'error');
       }
     });
+  }
+
+  onCancel(): void {
+    this.router.navigate(['/profile/admin']);
   }
 }

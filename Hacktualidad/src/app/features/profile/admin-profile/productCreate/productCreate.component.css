@@ -10,6 +10,7 @@
 
 
 .form-wrapper {
+  margin-top: 100px;
   width: 100%;
   max-width: 500px;
   padding: 40px;
@@ -19,6 +20,7 @@
   box-shadow: 0 0 25px rgba(0, 255, 0, 0.4);
   backdrop-filter: blur(5px);
   color: #0f0;
+  margin-bottom: 100px;
 
 }
 

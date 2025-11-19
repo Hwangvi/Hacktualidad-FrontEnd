@@ -1,10 +1,17 @@
 <div class="post-list-container">
-  <h1 *ngIf="topicName">Posts en {{ topicName }}</h1>
+  <div class="list-header">
+    <h1 *ngIf="topicName">Posts en {{ topicName }}</h1>
 
-  <a *ngIf="topicName" [routerLink]="['/forum', topicName, 'create']" class="create-post-btn">
-  <span>Crear Nuevo Post</span>
-</a>
+    <div class="header-actions">
+      <button (click)="goBack()" class="btn-back">
+        <span>&lt; Volver al Foro</span>
+      </button>
 
+      <a *ngIf="topicName" [routerLink]="['/forum', topicName, 'create']" class="create-post-btn">
+        <span>Crear Nuevo Post</span>
+      </a>
+    </div>
+  </div>
   <div *ngIf="isLoading" class="loading">Cargando posts...</div>
 
   <div *ngIf="!isLoading && posts.length > 0" class="posts-grid">

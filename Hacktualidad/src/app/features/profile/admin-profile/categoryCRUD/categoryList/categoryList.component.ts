@@ -1,7 +1,7 @@
 // src/app/features/profile/admin-profile/category-list/category-list.component.ts
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Router } from '@angular/router';
 import { Observable, Subject } from 'rxjs';
 import { startWith, switchMap } from 'rxjs/operators';
 import Swal from 'sweetalert2';
@@ -20,7 +20,7 @@ export class CategoryListComponent implements OnInit {
   private refreshTrigger$ = new Subject<void>();
   categories$!: Observable<Category[]>;
 
-  constructor(private categoryService: CategoryService) {}
+  constructor(private categoryService: CategoryService, private router: Router) {}
 
   ngOnInit(): void {
     this.categories$ = this.refreshTrigger$.pipe(
@@ -53,5 +53,9 @@ export class CategoryListComponent implements OnInit {
         });
       }
     });
+  }
+
+  onCancel(): void {
+    this.router.navigate(['/profile/admin']);
   }
 }

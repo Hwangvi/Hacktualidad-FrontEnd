@@ -1,12 +1,12 @@
 <div class="form-container">
   <div *ngIf="!isLoading && !error" class="form-wrapper">
 
-    <h1>Editando Hilo: <span class="topic-highlight">"{{ post?.title }}"</span></h1>
+    <h1>Editando Topic: <span class="topic-highlight">"{{ post?.title }}"</span></h1>
 
     <form [formGroup]="postForm" (ngSubmit)="onSubmit()">
 
       <div class="form-group">
-        <label for="title">Asunto / Título del Hilo</label>
+        <label for="title">Título del Topic</label>
         <input id="title" type="text" formControlName="title">
         <div *ngIf="postForm.controls['title'].invalid && postForm.controls['title'].touched" class="error-message">
           > Fallo de protocolo: El título debe tener al menos 5 caracteres.
@@ -14,16 +14,19 @@
       </div>
 
       <div class="form-group">
-        <label for="content">Cuerpo del Mensaje / Contenido</label>
+        <label for="content">Contenido</label>
         <textarea id="content" formControlName="content" rows="10"></textarea>
         <div *ngIf="postForm.controls['content'].invalid && postForm.controls['content'].touched" class="error-message">
           > Fallo de protocolo: El contenido debe tener al menos 20 caracteres.
         </div>
       </div>
 
-      <button type="submit" [disabled]="postForm.invalid || isSubmitting || !postForm.dirty">
-        {{ isSubmitting ? 'Aplicando cambios...' : 'Guardar Cambios' }}
-      </button>
+      <div class="form-actions">
+        <button type="button" class="btn-cancel" (click)="onCancel()">Cancelar</button>
+        <button type="submit" class="btn-save" [disabled]="postForm.invalid || isSubmitting || !postForm.dirty">
+          {{ isSubmitting ? 'Aplicando cambios...' : 'Guardar Cambios' }}
+        </button>
+      </div>
 
     </form>
   </div>

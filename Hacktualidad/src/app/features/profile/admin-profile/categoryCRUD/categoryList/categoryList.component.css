@@ -71,6 +71,32 @@
   flex-grow: 1;
 }
 
+.footer-card {
+  margin-top: 2rem;
+}
+
+.header-card, .footer-card {
+  background-color: rgba(10, 25, 10, 0.3);
+  border: 1px solid #00ff00;
+  border-radius: 8px;
+  padding: 20px 40px;
+  box-shadow: 0 0 20px rgba(0, 255, 0, 0.4);
+  text-align: center;
+}
+
+.btn-cancel {
+  background: none;
+  border: 1px solid #00ff00;
+  color: #00ff00;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.btn-cancel:hover {
+  background-color: #00ff00;
+  color: #000;
+}
 .name {
   font-size: 1.4em;
   color: #aaffaa;

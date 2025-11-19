@@ -5,17 +5,14 @@ html {
   overflow-y: scroll;
 }
 
-
 body.swal2-shown {
   padding-right: 0px !important;
 }
-
 
 * {
   margin: 0;
   padding: 0;
 }
-
 
 body {
   overflow-x: hidden;
@@ -24,9 +21,6 @@ body {
 
   color: #e0e0e0;
 }
-
-
-
 
 header {
   background-color: #4292e1;
@@ -126,4 +120,10 @@ footer {
 .hacker-popup .swal2-icon.swal2-error .swal2-x-mark-line-left,
 .hacker-popup .swal2-icon.swal2-error .swal2-x-mark-line-right {
   background-color: #ff3333 !important;
+}
+
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }

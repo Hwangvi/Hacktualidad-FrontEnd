@@ -46,6 +46,6 @@ export class CategoryCreateComponent {
   }
 
   onCancel(): void {
-    this.router.navigate(['/profile/admin/categories/list']);
+    this.router.navigate(['/profile/admin']);
   }
 }

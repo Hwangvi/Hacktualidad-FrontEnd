@@ -92,4 +92,12 @@ export class PostDetailsComponent implements OnInit {
             }
         });
     }
+
+    goBack(): void {
+    if (this.post && this.post.topicName) {
+      this.router.navigate(['/forum', this.post.topicName]);
+    } else {
+      this.router.navigate(['/forum']);
+    }
+  }
 }

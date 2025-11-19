@@ -68,7 +68,6 @@ export class EditProfileComponent implements OnInit {
       phone: this.editableUser.phone,
     };
 
-
     const formData = new FormData();
     formData.append('user', JSON.stringify(userUpdateData));
 
@@ -79,7 +78,12 @@ export class EditProfileComponent implements OnInit {
     this.userService.updateUser(this.editableUser.userId, formData).subscribe({
       next: (updatedUser: User) => {
         this.authService.updateCurrentUser(updatedUser);
-        this.router.navigate(['/profile/user'], { queryParams: { updated: 'true' } });
+
+        if (updatedUser.role === 'ADMIN') {
+          this.router.navigate(['/profile/admin'], { queryParams: { updated: 'true' } });
+        } else {
+          this.router.navigate(['/profile/user'], { queryParams: { updated: 'true' } });
+        }
       },
       error: (err) => {
         console.error('Error al actualizar:', err);

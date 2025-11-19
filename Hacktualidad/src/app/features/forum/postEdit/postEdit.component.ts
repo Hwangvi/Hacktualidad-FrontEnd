@@ -101,4 +101,12 @@ export class PostEditComponent implements OnInit {
       }
     });
   }
+
+  onCancel(): void {
+    if (this.postId) {
+      this.router.navigate(['/posts', this.postId]);
+    } else {
+      this.router.navigate(['/profile/admin/forum/moderate']);
+    }
+  }
 }

@@ -4,7 +4,6 @@ import { Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { Product } from '../../../../shared/interfaces/Product';
 import Swal from 'sweetalert2';
-// ¡Importaciones clave de RxJS!
 import { Observable, Subject } from 'rxjs';
 import { startWith, switchMap } from 'rxjs/operators';
 

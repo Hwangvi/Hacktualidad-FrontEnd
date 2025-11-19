@@ -1,22 +1,22 @@
 :host {
-  display: block;
-  padding-top: 80px;
-  padding-bottom: 40px;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 120px 20px 60px 20px;
+  box-sizing: border-box;
 }
 
 .container {
-  width: 90%;
+  width: 100%;
   max-width: 900px;
-  margin: 0 auto;
 }
 
 .post-wrapper {
-  padding: 30px;
-  background-color: rgba(10, 25, 10, 0.7);
-  border: 1px solid var(--hacker-border-color);
-  box-shadow: 0 0 25px var(--hacker-glow-color);
-  backdrop-filter: blur(5px);
-  color: var(--hacker-text-dim);
+  padding: 30px 40px;
+  background-color: rgba(10, 25, 10, 0.3);
+  border: 1px solid var(--hacker-green);
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(0, 255, 0, 0.4), inset 0 0 10px rgba(0, 255, 0, 0.3);
 }
 
 .loading-state,
@@ -26,232 +26,258 @@
   font-size: 1.5rem;
   font-family: var(--font-code);
   border: 1px dashed var(--hacker-border-color);
+  color: var(--hacker-text-dim);
 }
+
 .error-state {
-  color: var(--hacker-red);
-  border-color: var(--hacker-red);
+  border-color: #ff3333;
+  color: #ff5555;
 }
-.error-state .error-details {
+
+.error-details {
   font-size: 1rem;
-  opacity: 0.8;
+  color: #ffaeae;
+  margin-top: 10px;
 }
 
 .post-header {
+  border-bottom: 1px dashed rgba(0, 255, 0, 0.2);
+  padding-bottom: 25px;
   margin-bottom: 30px;
+  background-color: #000;
 }
+
 .post-title {
-  color: var(--hacker-green);
   font-family: var(--font-primary);
   font-size: 2.8rem;
-  margin-bottom: 20px;
-  animation: flicker 1.5s infinite alternate;
+  color: #fff;
+  text-shadow: 0 0 8px #fff, 0 0 15px var(--hacker-green);
+  margin: 0 0 25px 0;
+  line-height: 1.2;
 }
 
 .author-section {
   display: flex;
   align-items: center;
+  gap: 15px;
 }
+
 .author-photo {
-  width: 60px;
-  height: 60px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
-  object-fit: cover;
   border: 2px solid var(--hacker-green);
-  filter: grayscale(1) sepia(100%) hue-rotate(55deg) saturate(7) brightness(1.2);
-}
-.author-photo.small {
-  width: 45px;
-  height: 45px;
+  object-fit: cover;
 }
 
 .author-details {
   display: flex;
   flex-direction: column;
-  margin-left: 15px;
 }
+
 .author-name {
-  font-weight: bold;
-  font-size: 1.1rem;
   font-family: var(--font-primary);
-  color: var(--hacker-green);
+  font-size: 1.1rem;
+  color: #aaffaa;
+  font-weight: bold;
 }
+
 .post-date {
+  font-family: var(--font-code);
   font-size: 0.9rem;
   color: var(--hacker-text-dim);
-  opacity: 0.8;
-  font-family: var(--font-code);
 }
 
 .post-body {
   font-family: var(--font-code);
-  line-height: 1.7;
   font-size: 1.1rem;
+  line-height: 1.8;
+  color: #d1ffd1;
   white-space: pre-wrap;
-  background-color: rgba(0, 0, 0, 0.5);
-  padding: 20px;
-  border: 1px dashed var(--hacker-border-color);
 }
 
 .separator {
-  border: 0;
+  border: none;
   height: 1px;
-  background-image: linear-gradient(to right, transparent, var(--hacker-border-color), transparent);
+  background-image: linear-gradient(to right, transparent, rgba(0, 255, 0, 0.3), transparent);
   margin: 40px 0;
 }
 
-.comments-section {
-  display: block;
-}
-
 .comments-section h2 {
-  font-size: 1.8rem; margin-bottom: 25px; font-family: var(--font-primary);
-  color: var(--hacker-green);
+  font-family: var(--font-primary);
+  font-size: 1.8rem;
+  color: #aaffaa;
+  margin-bottom: 30px;
+  border-bottom: 1px solid var(--hacker-border-color);
+  padding-bottom: 10px;
 }
 
 .comment-form {
-  border: 1px dashed var(--hacker-border-color);
-  background-color: rgba(0,0,0,0.5);
-  padding: 20px;
+  margin-bottom: 40px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-family: var(--font-primary);
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  color: #aaffaa;
+}
+
+.form-group textarea {
+  width: 95%;
+  padding: 12px 15px;
+  border: 1px solid #0f0;
   border-radius: 4px;
-  margin-bottom: 40px; /* Separación con la lista de comentarios */
-}
-
-.comment-form .form-group { margin-bottom: 15px; }
-.comment-form label { display: block; margin-bottom: 8px; font-weight: bold; }
-
-
-.comment-form textarea {
-  width: 100%;
-  box-sizing: border-box;
+  background-color: rgba(0, 255, 0, 0.05);
+  color: #0f0;
+  font-family: var(--font-code);
   resize: vertical;
   min-height: 100px;
-  padding: 10px;
-  border: 1px solid var(--hacker-border-color);
-  background-color: transparent;
-  color: var(--hacker-green);
-  font-family: var(--font-code);
-  caret-color: var(--hacker-green);
-  transition: all 0.3s ease;
 }
-.comment-form textarea:focus {
+
+.form-group textarea:focus {
   outline: none;
-  border-color: var(--hacker-green);
-  box-shadow: 0 0 15px var(--hacker-glow-color);
+  box-shadow: 0 0 10px rgba(0, 255, 0, 0.7);
 }
 
 .form-actions {
-  display: flex;
-  justify-content: flex-end;
+  text-align: right;
 }
 
-.comment-form textarea {
-  width: 100%;
-  box-sizing: border-box;
-  /* El resize ahora solo es vertical, evitando que se rompa el layout horizontalmente */
-  resize: vertical;
-  min-height: 100px;
-  padding: 10px;
-  border: 1px solid var(--hacker-border-color);
+.form-actions button {
+  padding: 10px 25px;
+  border: 2px solid #0f0;
   background-color: transparent;
-  color: var(--hacker-green);
-  font-family: var(--font-code);
-  caret-color: var(--hacker-green);
+  color: #0f0;
+  font-family: var(--font-primary);
+  text-transform: uppercase;
+  cursor: pointer;
   transition: all 0.3s ease;
 }
-.comment-form textarea:focus {
-  outline: none; border-color: var(--hacker-green);
-  box-shadow: 0 0 15px var(--hacker-glow-color);
+
+.form-actions button:hover:not(:disabled) {
+  background-color: #0f0;
+  color: #000;
+  box-shadow: 0 0 20px rgba(0, 255, 0, 0.8);
 }
 
-.form-actions {
-  display: flex;
-  justify-content: flex-end;
-}
-.form-actions button {
-  padding: 10px 25px; background-color: transparent;
-  color: var(--hacker-green); border: 2px solid var(--hacker-green);
-  font-family: var(--font-primary); text-transform: uppercase;
-  cursor: pointer; transition: all 0.3s ease;
-}
-.form-actions button:hover:not(:disabled) {
-  background-color: var(--hacker-green); color: var(--hacker-bg);
-}
 .form-actions button:disabled {
-  border-color: var(--hacker-green-dark); color: var(--hacker-green-dark);
-  cursor: not-allowed; opacity: 0.5;
+  border-color: #444;
+  color: #444;
+  cursor: not-allowed;
 }
 
 .comments-list {
-  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
 }
+
 .comment-item {
   display: flex;
-  padding-top: 20px;
-  border-top: 1px dashed rgba(0, 255, 65, 0.2);
+  align-items: flex-start;
+  gap: 15px;
+  padding-bottom: 20px;
+  border-bottom: 1px dashed rgba(0, 255, 0, 0.15);
 }
-.comments-list .comment-item:not(:last-child) {
-  margin-bottom: 20px;
+
+.comment-item:last-child {
+  border-bottom: none;
+}
+
+.author-photo.small {
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
 }
 
 .comment-body {
-  margin-left: 15px;
   flex-grow: 1;
 }
+
 .comment-author-info {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  margin-bottom: 5px;
+  align-items: baseline;
+  margin-bottom: 8px;
 }
+
 .comment-author-info strong {
-  color: var(--hacker-green);
+  color: #fff;
   font-family: var(--font-primary);
+  font-size: 1rem;
 }
-.comment-author-info .comment-date {
+
+.comment-date {
+  font-family: var(--font-code);
   font-size: 0.8rem;
   color: var(--hacker-text-dim);
-  font-family: var(--font-code);
 }
+
 .comment-text {
   margin: 0;
   font-family: var(--font-code);
-  white-space: pre-wrap;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #d1ffd1;
 }
+
 .no-comments-message {
-  margin-top: 30px;
-  color: var(--hacker-text-dim);
-  opacity: 0.7;
-  font-family: var(--font-code);
-  border: 1px dashed var(--hacker-border-color);
   padding: 20px;
   text-align: center;
+  font-size: 1rem;
+  font-family: var(--font-code);
+  border: 1px dashed var(--hacker-border-color);
+  color: var(--hacker-text-dim);
 }
 
-::selection {
-  background-color: var(--hacker-green); /* El fondo de la selección será verde */
-  color: var(--hacker-bg); /* El texto seleccionado será oscuro */
-  text-shadow: none; /* Quitamos cualquier sombra para mayor legibilidad */
+.page-actions {
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px dashed rgba(0, 255, 0, 0.2);
+  display: flex;
+  justify-content: center;
 }
 
-::-moz-selection { /* Para Firefox */
-  background-color: var(--hacker-green);
-  color: var(--hacker-bg);
-  text-shadow: none;
+.btn-back {
+  width: auto;
+  padding: 3px;
+  text-align: center;
+  text-decoration: none;
+  background: linear-gradient(45deg, var(--hacker-green), var(--hacker-green-dark));
+  border: none;
+  border-radius: 8px;
+  position: relative;
+  cursor: pointer;
+  transition: box-shadow 0.3s ease;
+  font-family: inherit;
+  color: #d1ffd1;
 }
 
-@keyframes flicker {
-  0%,
-  18%,
-  22%,
-  25%,
-  53%,
-  57%,
-  100% {
-    text-shadow: 0 0 4px #0f0, 0 0 11px #0f0;
-  }
-  20%,
-  24%,
-  55% {
-    text-shadow: none;
-  }
+.btn-back span {
+  display: block;
+  padding: 10px 25px;
+  background-color: #0a110a;
+  border-radius: 6px;
+  color: var(--hacker-green);
+  font-family: var(--font-primary);
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.btn-back:hover {
+  box-shadow: 0 0 25px var(--hacker-glow-color);
+}
+
+.btn-back:hover span {
+  color: #11ff11;
+  background-color: transparent;
 }

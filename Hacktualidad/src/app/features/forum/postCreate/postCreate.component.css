@@ -116,7 +116,7 @@ button[type="submit"]:disabled {
 }
 
 .error-message {
-  color: #ff3333; /* Rojo neón */
+  color: #ff3333;
   font-family: 'Fira Code', monospace;
   font-size: 0.85rem;
   margin-top: 8px;
