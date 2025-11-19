@@ -3,7 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { RouterModule } from '@angular/router';
-import { UserRegister } from '../../shared/interfaces/UsuarioRegistrado';
+import { UserRegister } from '../../shared/interfaces/UserRegister';
 import { UserService } from '../../core/service/user.service';
 import Swal from 'sweetalert2';
 

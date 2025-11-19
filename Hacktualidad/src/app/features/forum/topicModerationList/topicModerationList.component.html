@@ -1,0 +1,14 @@
+<div class="moderation-container">
+  <h2 class="glitch" data-text="Seleccionar Temática">Seleccionar Temática</h2>
+  <p class="subtitle">Elige una temática para ver y moderar sus posts.</p>
+  <div *ngIf="isLoading" class="loading-state">Cargando temáticas...</div>
+
+  <div *ngIf="!isLoading && topics.length > 0" class="topic-list">
+    <a *ngFor="let topic of topics"
+       [routerLink]="['/profile/admin/forum/moderate', topic.topicName]"
+       class="topic-item">
+      <h3>{{ topic.topicName }}</h3>
+      <p>{{ topic.topicDescription }}</p>
+    </a>
+  </div>
+</div>

@@ -3,11 +3,12 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { Product } from '../../../shared/interfaces/Product';
 import { ProductService } from '../../../core/service/product.service';
+import { CategoryColorPipe } from '../../../shared/pipes/categoryColor.pipe';
 
 @Component({
   selector: 'app-product-list',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, CategoryColorPipe],
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.css']
 })

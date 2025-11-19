@@ -1,0 +1,139 @@
+:host {
+  display: block;
+  padding-top: 80px;
+}
+
+.post-list-container {
+  width: 90%;
+  max-width: 950px;
+  margin: 0 auto 40px;
+}
+
+h1 {
+  margin-top: 30px;
+  margin-bottom: 20px;
+  color: var(--hacker-green);
+  font-family: var(--font-primary);
+  font-size: 2.5rem;
+  text-align: center;
+  text-transform: uppercase;
+  animation: flicker 1.5s infinite alternate;
+}
+h1::before { content: 'DIR: '; opacity: 0.6; }
+
+.create-post-btn {
+  display: block;
+  width: 250px;
+  margin: 0 auto 50px;
+  padding: 3px;
+  text-align: center;
+  text-decoration: none;
+  border: 2px solid #00ff00;
+  color: #00ff00;
+  border-radius: 8px;
+  position: relative;
+  overflow: hidden;
+  transition: box-shadow 0.3s ease;
+}
+
+.create-post-btn span {
+  display: block;
+  padding: 12px 20px;
+  background-color: var(--hacker-bg);
+  border-radius: 6px;
+  color: var(--hacker-green);
+  font-family: var(--font-primary);
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.create-post-btn:hover {
+  box-shadow: 0 0 25px var(--hacker-glow-color);
+}
+
+.create-post-btn:hover span {
+  color: var(--hacker-bg);
+  background-color: transparent; /* Al pasar el ratón, se revela el gradiente */
+}
+
+.loading, .no-posts {
+  border: 1px dashed var(--hacker-border-color);
+  padding: 30px;
+  text-align: center;
+  font-family: var(--font-code);
+  font-size: 1.1rem;
+  color: var(--hacker-text-dim);
+}
+
+.posts-grid {
+  display: grid;
+  gap: 20px;
+}
+
+.post-item {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  background-color: rgba(10, 25, 10, 0.7);
+  border: 1px solid var(--hacker-border-color);
+  border-radius: 4px;
+  backdrop-filter: blur(3px); /* Efecto cristal sutil */
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+.post-item:hover {
+  background-color: rgba(0, 255, 65, 0.15);
+  border-color: var(--hacker-green);
+  transform: translateY(-5px); /* Efecto de elevación */
+  box-shadow: 0 5px 20px var(--hacker-glow-color);
+}
+
+.post-author-info {
+  text-align: center;
+  margin-right: 20px;
+  flex-shrink: 0;
+}
+
+.author-photo {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 2px solid var(--hacker-green);
+  object-fit: cover;
+  filter: grayscale(1) sepia(100%) hue-rotate(55deg) saturate(7) brightness(1.2);
+}
+
+.author-name {
+  display: block;
+  font-size: 0.8rem;
+  margin-top: 5px;
+  font-family: var(--font-code);
+  color: var(--hacker-text-dim);
+}
+
+.post-title {
+  margin: 0 0 5px 0;
+  font-size: 1.3rem;
+  color: var(--hacker-green);
+  font-family: var(--font-primary);
+}
+
+.post-date {
+  font-size: 0.9rem;
+  color: var(--hacker-text-dim);
+  opacity: 0.7;
+  font-family: var(--font-code);
+}
+
+
+@keyframes flicker {
+  0%, 18%, 22%, 25%, 53%, 57%, 100% {
+    text-shadow:
+      0 0 4px #0f0,
+      0 0 11px #0f0;
+  }
+  20%, 24%, 55% { text-shadow: none; }
+}

@@ -9,7 +9,7 @@
     </div>
 
     <div class="card-content">
-      <span class="category-tag" *ngIf="product.category">{{ product.category.name }}</span>
+      <span class="category-tag" *ngIf="product.category" [ngClass]="product.category.name | categoryColor">{{product.category.name}}</span>
 
       <h3 class="product-name">{{ product.name }}</h3>
 

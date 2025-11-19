@@ -1,0 +1,257 @@
+:host {
+  display: block;
+  padding-top: 80px;
+  padding-bottom: 40px;
+}
+
+.container {
+  width: 90%;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.post-wrapper {
+  padding: 30px;
+  background-color: rgba(10, 25, 10, 0.7);
+  border: 1px solid var(--hacker-border-color);
+  box-shadow: 0 0 25px var(--hacker-glow-color);
+  backdrop-filter: blur(5px);
+  color: var(--hacker-text-dim);
+}
+
+.loading-state,
+.error-state {
+  padding: 50px;
+  text-align: center;
+  font-size: 1.5rem;
+  font-family: var(--font-code);
+  border: 1px dashed var(--hacker-border-color);
+}
+.error-state {
+  color: var(--hacker-red);
+  border-color: var(--hacker-red);
+}
+.error-state .error-details {
+  font-size: 1rem;
+  opacity: 0.8;
+}
+
+.post-header {
+  margin-bottom: 30px;
+}
+.post-title {
+  color: var(--hacker-green);
+  font-family: var(--font-primary);
+  font-size: 2.8rem;
+  margin-bottom: 20px;
+  animation: flicker 1.5s infinite alternate;
+}
+
+.author-section {
+  display: flex;
+  align-items: center;
+}
+.author-photo {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--hacker-green);
+  filter: grayscale(1) sepia(100%) hue-rotate(55deg) saturate(7) brightness(1.2);
+}
+.author-photo.small {
+  width: 45px;
+  height: 45px;
+}
+
+.author-details {
+  display: flex;
+  flex-direction: column;
+  margin-left: 15px;
+}
+.author-name {
+  font-weight: bold;
+  font-size: 1.1rem;
+  font-family: var(--font-primary);
+  color: var(--hacker-green);
+}
+.post-date {
+  font-size: 0.9rem;
+  color: var(--hacker-text-dim);
+  opacity: 0.8;
+  font-family: var(--font-code);
+}
+
+.post-body {
+  font-family: var(--font-code);
+  line-height: 1.7;
+  font-size: 1.1rem;
+  white-space: pre-wrap;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 20px;
+  border: 1px dashed var(--hacker-border-color);
+}
+
+.separator {
+  border: 0;
+  height: 1px;
+  background-image: linear-gradient(to right, transparent, var(--hacker-border-color), transparent);
+  margin: 40px 0;
+}
+
+.comments-section {
+  display: block;
+}
+
+.comments-section h2 {
+  font-size: 1.8rem; margin-bottom: 25px; font-family: var(--font-primary);
+  color: var(--hacker-green);
+}
+
+.comment-form {
+  border: 1px dashed var(--hacker-border-color);
+  background-color: rgba(0,0,0,0.5);
+  padding: 20px;
+  border-radius: 4px;
+  margin-bottom: 40px; /* Separación con la lista de comentarios */
+}
+
+.comment-form .form-group { margin-bottom: 15px; }
+.comment-form label { display: block; margin-bottom: 8px; font-weight: bold; }
+
+
+.comment-form textarea {
+  width: 100%;
+  box-sizing: border-box;
+  resize: vertical;
+  min-height: 100px;
+  padding: 10px;
+  border: 1px solid var(--hacker-border-color);
+  background-color: transparent;
+  color: var(--hacker-green);
+  font-family: var(--font-code);
+  caret-color: var(--hacker-green);
+  transition: all 0.3s ease;
+}
+.comment-form textarea:focus {
+  outline: none;
+  border-color: var(--hacker-green);
+  box-shadow: 0 0 15px var(--hacker-glow-color);
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.comment-form textarea {
+  width: 100%;
+  box-sizing: border-box;
+  /* El resize ahora solo es vertical, evitando que se rompa el layout horizontalmente */
+  resize: vertical;
+  min-height: 100px;
+  padding: 10px;
+  border: 1px solid var(--hacker-border-color);
+  background-color: transparent;
+  color: var(--hacker-green);
+  font-family: var(--font-code);
+  caret-color: var(--hacker-green);
+  transition: all 0.3s ease;
+}
+.comment-form textarea:focus {
+  outline: none; border-color: var(--hacker-green);
+  box-shadow: 0 0 15px var(--hacker-glow-color);
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+.form-actions button {
+  padding: 10px 25px; background-color: transparent;
+  color: var(--hacker-green); border: 2px solid var(--hacker-green);
+  font-family: var(--font-primary); text-transform: uppercase;
+  cursor: pointer; transition: all 0.3s ease;
+}
+.form-actions button:hover:not(:disabled) {
+  background-color: var(--hacker-green); color: var(--hacker-bg);
+}
+.form-actions button:disabled {
+  border-color: var(--hacker-green-dark); color: var(--hacker-green-dark);
+  cursor: not-allowed; opacity: 0.5;
+}
+
+.comments-list {
+  margin-top: 40px;
+}
+.comment-item {
+  display: flex;
+  padding-top: 20px;
+  border-top: 1px dashed rgba(0, 255, 65, 0.2);
+}
+.comments-list .comment-item:not(:last-child) {
+  margin-bottom: 20px;
+}
+
+.comment-body {
+  margin-left: 15px;
+  flex-grow: 1;
+}
+.comment-author-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 5px;
+}
+.comment-author-info strong {
+  color: var(--hacker-green);
+  font-family: var(--font-primary);
+}
+.comment-author-info .comment-date {
+  font-size: 0.8rem;
+  color: var(--hacker-text-dim);
+  font-family: var(--font-code);
+}
+.comment-text {
+  margin: 0;
+  font-family: var(--font-code);
+  white-space: pre-wrap;
+}
+.no-comments-message {
+  margin-top: 30px;
+  color: var(--hacker-text-dim);
+  opacity: 0.7;
+  font-family: var(--font-code);
+  border: 1px dashed var(--hacker-border-color);
+  padding: 20px;
+  text-align: center;
+}
+
+::selection {
+  background-color: var(--hacker-green); /* El fondo de la selección será verde */
+  color: var(--hacker-bg); /* El texto seleccionado será oscuro */
+  text-shadow: none; /* Quitamos cualquier sombra para mayor legibilidad */
+}
+
+::-moz-selection { /* Para Firefox */
+  background-color: var(--hacker-green);
+  color: var(--hacker-bg);
+  text-shadow: none;
+}
+
+@keyframes flicker {
+  0%,
+  18%,
+  22%,
+  25%,
+  53%,
+  57%,
+  100% {
+    text-shadow: 0 0 4px #0f0, 0 0 11px #0f0;
+  }
+  20%,
+  24%,
+  55% {
+    text-shadow: none;
+  }
+}

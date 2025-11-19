@@ -1,21 +1,15 @@
-/* =================================================================== */
-/* === ESTILOS REFACTORIZADOS PARA EL PANEL DE GESTIÓN             === */
-/* =================================================================== */
-
-/* 1. Contenedor principal para centrar el panel en la página */
 .panel-container {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
-  padding: 40px 20px; /* Espacio superior e inferior */
+  padding: 40px 20px;
   box-sizing: border-box;
 }
 
-/* La tarjeta del panel, ahora sin márgenes ya que el padre la centra */
 .admin-management-panel {
   width: 100%;
-  max-width: 700px; /* Mantiene el ancho máximo */
+  max-width: 700px;
   background-color: rgba(10, 25, 10, 0.3);
   border: 1px solid #00ff00;
   border-radius: 8px;
@@ -25,34 +19,33 @@
   font-family: 'Share Tech Mono', monospace;
 }
 
-/* 2. Sección de gestión modificada para alinear título y botones */
 .management-section {
-  display: flex; /* <-- La clave para poner los elementos en línea */
-  justify-content: space-between; /* <-- Empuja el título a la izq. y los botones a la der. */
-  align-items: center; /* <-- Los alinea verticalmente */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   margin-top: 20px;
   padding-bottom: 20px;
-  border-bottom: 1px dashed rgba(0, 255, 0, 0.2); /* Borde en la sección, no en el h3 */
+  border-bottom: 1px dashed rgba(0, 255, 0, 0.2);
 }
 
 .management-section:last-child {
-  border-bottom: none; /* Elimina el borde del último elemento */
+  border-bottom: none;
 }
 
 .management-section h3 {
   color: #aaffaa;
   opacity: 0.8;
   font-size: 1.2em;
-  margin: 0; /* Quitamos márgenes para que flexbox lo controle todo */
+  margin: 0;
 }
 
 .management-actions {
   display: flex;
-  gap: 10px; /* Espacio entre los botones */
+  gap: 10px;
 }
 
 .admin-btn {
-  padding: 8px 16px; /* Hacemos los botones un poco más compactos */
+  padding: 8px 16px;
   background-color: transparent;
   border: 2px solid #00ff00;
   color: #00ff00;

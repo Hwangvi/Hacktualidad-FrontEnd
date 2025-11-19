@@ -22,6 +22,11 @@ export class AuthService {
     return this.currentUserSubject.value;
   }
 
+  public get isAdmin(): boolean {
+    const user = this.currentUserValue;
+    return user ? user.role === 'ADMIN' : false;
+  }
+
   login(credentials: any): Observable<User> {
 
     return this.http.post<User>(`${this.apiUrl}/login`, credentials, { withCredentials: true }).pipe(

@@ -1,0 +1,22 @@
+<div class="form-container">
+  <div class="form-wrapper">
+    <h2>Crear Nueva Temática</h2>
+    <form [formGroup]="topicForm" (ngSubmit)="onSubmit()">
+
+      <div class="form-group">
+        <label for="topicName">ID de la Temática (Nombre)</label>
+        <input id="topicName" type="text" formControlName="topicName" placeholder="Ej: red-team, blue-team...">
+      </div>
+
+      <div class="form-group">
+        <label for="topicDescription">Descripción / Briefing</label>
+        <textarea id="topicDescription" formControlName="topicDescription" rows="5" placeholder="Describe el propósito de esta temática..."></textarea>
+      </div>
+
+      <button type="submit" [disabled]="topicForm.invalid || isSubmitting">
+        {{ isSubmitting ? 'Iniciando Protocolo...' : 'Ejecutar Creación' }}
+      </button>
+
+    </form>
+  </div>
+</div>
