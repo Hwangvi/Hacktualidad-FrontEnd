@@ -1,5 +1,3 @@
-// src/app/features/profile/admin-profile/category-edit/category-edit.component.ts
-
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';

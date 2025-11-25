@@ -1,4 +1,3 @@
-
 import { User } from './../../../../../shared/interfaces/User';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';

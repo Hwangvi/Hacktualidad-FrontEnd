@@ -12,6 +12,10 @@
 
       <a *ngIf="isLoggedIn" [routerLink]="profileLink" routerLinkActive="active">Mi perfil</a>
 
+      <a routerLink="/cart" routerLinkActive="active">
+       CARRITO <span *ngIf="cartItemCount > 0" style="color:#00ffcc">[{{cartItemCount}}]</span>
+      </a>
+
       <a *ngIf="isLoggedIn" (click)="logout()" style="cursor: pointer;">Cerrar Sesión</a>
 
       <a *ngIf="!isLoggedIn" routerLink="/login" routerLinkActive="active">Iniciar Sesión</a>

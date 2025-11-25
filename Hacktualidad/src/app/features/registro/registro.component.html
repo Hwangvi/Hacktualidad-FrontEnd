@@ -27,17 +27,13 @@
         <input type="email" id="email" name="email" [(ngModel)]="user.email" required />
       </div>
 
-
-  <div class="form-group file-upload-wrapper">
-  <label for="photo" class="btn-file-upload">// Seleccionar Foto de Perfil</label>
-  <input type="file" id="photo" name="photo" (change)="onFileSelected($event)">
-  <div *ngIf="imagePreview" class="image-preview">
-    <img [src]="imagePreview" alt="Previsualización de imagen">
-  </div>
-
-</div>
-
-
+      <div class="form-group file-upload-wrapper">
+        <label for="photo" class="btn-file-upload">// Seleccionar Foto de Perfil</label>
+        <input type="file" id="photo" name="photo" (change)="onFileSelected($event)" />
+        <div *ngIf="imagePreview" class="image-preview">
+          <img [src]="imagePreview" alt="Previsualización de imagen" />
+        </div>
+      </div>
 
       <div class="form-group">
         <label for="password">Contraseña</label>

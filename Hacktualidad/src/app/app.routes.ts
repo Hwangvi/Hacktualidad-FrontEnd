@@ -23,12 +23,12 @@ import { CategoryCreateComponent } from './features/profile/admin-profile/catego
 import { PostListComponent } from './features/forum/postList/postList.component';
 import { PostDetailsComponent } from './features/forum/postDetails/postDetails.component';
 import { PostCreateComponent } from './features/forum/postCreate/postCreate.component';
-// --- ¡IMPORTACIONES CORREGIDAS! ---
 import { TopicCreateComponent } from './features/profile/admin-profile/topicCRUD/topicCreate/topicCreate.component';
 import { PostModerationComponent } from './features/profile/admin-profile/admin-panel/postCRUD/postModeration/postModeration.component';
 import { TopicModerationListComponent } from './features/forum/topicModerationList/topicModerationList.component';
 import { PostEditComponent } from './features/forum/postEdit/postEdit.component';
 import { TopicModerationDetailComponent } from './features/profile/admin-profile/topicCRUD/topicModeration/topicModerationDetail.component';
+import { CartComponent } from './features/forum/cart/cart.component';
 
 export const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -38,6 +38,9 @@ export const routes: Routes = [
 
   { path: 'tienda', component: TiendaComponent, canActivate: [authGuard] },
   { path: 'tienda/:id', component: ProductDetailComponent, canActivate: [authGuard] },
+
+  // --- RUTA NUEVA PARA EL CARRITO ---
+  { path: 'cart', component: CartComponent, canActivate: [authGuard] },
 
   { path: 'forum', component: ForumComponent, canActivate: [authGuard] },
   { path: 'forum/:topicName', component: PostListComponent, canActivate: [authGuard] },
@@ -116,30 +119,24 @@ export const routes: Routes = [
         canActivate: [authGuard, roleGuard],
         data: { expectedRole: 'ADMIN' },
       },
-
-
       {
         path: 'admin/forum/topics/create',
         component: TopicCreateComponent,
         canActivate: [authGuard, roleGuard],
         data: { expectedRole: 'ADMIN' },
       },
-
       {
         path: 'admin/forum/topics/moderate',
         component: TopicModerationListComponent,
         canActivate: [authGuard, roleGuard],
         data: { expectedRole: 'ADMIN' },
       },
-
       {
         path: 'admin/forum/topics/moderate/:id',
         component: TopicModerationDetailComponent,
         canActivate: [authGuard, roleGuard],
         data: { expectedRole: 'ADMIN' },
       },
-
-
       {
         path: 'admin/forum/moderate',
         component: TopicModerationListComponent,

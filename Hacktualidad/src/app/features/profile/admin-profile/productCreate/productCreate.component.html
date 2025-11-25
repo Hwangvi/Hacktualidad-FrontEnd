@@ -55,6 +55,16 @@
         </div>
       </div>
 
+      <div class="form-group">
+        <label for="active">Estado del Producto</label>
+        <div class="select-wrapper">
+          <select id="active" name="active" [(ngModel)]="product.active" required>
+            <option [ngValue]="true">Activo (Visible en tienda)</option>
+            <option [ngValue]="false">Inactivo (Oculto)</option>
+          </select>
+        </div>
+      </div>
+
       <div class="form-group file-upload-wrapper">
         <label for="photo" class="btn-file-upload">// Seleccionar Foto</label>
         <input type="file" id="photo" name="photo" (change)="onFileSelected($event)" />

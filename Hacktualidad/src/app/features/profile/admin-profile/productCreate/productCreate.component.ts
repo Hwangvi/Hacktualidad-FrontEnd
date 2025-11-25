@@ -19,8 +19,9 @@ export class ProductCreateComponent implements OnInit {
   public product = {
     name: '',
     description: '',
-    price: null,
-    stock: null,
+    price: 0,
+    stock: 0,
+    active: true,
     category: null as Category | null
   };
 
@@ -57,19 +58,45 @@ export class ProductCreateComponent implements OnInit {
   }
 
   onSubmit(): void {
+    if (!this.product.category) {
+        Swal.fire('Atención', 'Debes seleccionar una categoría', 'warning');
+        return;
+    }
+
     const formData = new FormData();
-    formData.append('product', new Blob([JSON.stringify(this.product)], { type: 'application/json' }));
+
+    const productToSend = {
+        ...this.product,
+        category: {
+            categoryId: this.product.category.categoryId
+        }
+    };
+
+    formData.append('product', JSON.stringify(productToSend));
 
     if (this.selectedFile) {
-      formData.append('photo', this.selectedFile, this.selectedFile.name);
+      formData.append('photo', this.selectedFile);
     }
 
     this.productService.createProduct(formData).subscribe({
       next: () => {
-        Swal.fire({ title: '¡PRODUCTO CREADO!', text: 'El nuevo producto ha sido añadido.', icon: 'success' })
-           .then(() => this.router.navigate(['/profile/admin']));
+        Swal.fire({
+            title: '¡PRODUCTO CREADO!',
+            text: 'El nuevo producto ha sido añadido.',
+            icon: 'success',
+            background: '#1a1a1a',
+            color: '#00ffcc',
+            confirmButtonColor: '#00ffcc'
+        }).then(() => this.router.navigate(['/profile/admin']));
       },
-      error: (err) => Swal.fire({ title: 'ERROR', text: 'No se pudo crear el producto.', icon: 'error' })
+      error: (err) => {
+          console.error('Error del servidor:', err);
+          Swal.fire({
+              title: 'ERROR',
+              text: 'Error 400: Revisa que todos los campos sean válidos.',
+              icon: 'error'
+          });
+      }
     });
   }
 }

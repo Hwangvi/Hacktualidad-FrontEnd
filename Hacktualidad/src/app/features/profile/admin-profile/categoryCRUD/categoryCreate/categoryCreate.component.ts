@@ -1,5 +1,3 @@
-// src/app/features/profile/admin-profile/category-create/category-create.component.ts
-
 import { Component } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';

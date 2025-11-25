@@ -1,4 +1,3 @@
-// src/app/features/profile/admin-profile/category-list/category-list.component.ts
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Router } from '@angular/router';
