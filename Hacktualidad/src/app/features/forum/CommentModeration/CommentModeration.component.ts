@@ -78,12 +78,17 @@ export class CommentModerationComponent implements OnInit {
   deleteSelectedComments(): void {
     const count = this.selectedCommentIds.size;
     if (count === 0) {
-      Swal.fire('Atención', 'Selecciona al menos un comentario para borrar.', 'info');
+      Swal.fire({
+      title: `¡Error!`,
+      text: 'Selecciona al menos un comentario.',
+      icon: 'warning',
+      background: '#0a190a',
+      color: '#00ff00',});
       return;
     }
 
     Swal.fire({
-      title: `¿Borrar ${count} comentarios?`,
+      title: count == 1 ? `¿Borrar ${count} comentario?` : `¿Borrar ${count} comentarios?`,
       text: 'No podrás revertir esto.',
       icon: 'warning',
       showCancelButton: true,
@@ -110,7 +115,6 @@ export class CommentModerationComponent implements OnInit {
           title: 'SISTEMA LIMPIO',
           text: 'Comentarios eliminados del sistema.',
           icon: 'success',
-          // Estilos Hacking
           background: '#0a190a',
           color: '#00ff00',
           iconColor: '#00ff00',

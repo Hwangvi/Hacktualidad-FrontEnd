@@ -7,6 +7,7 @@ import { FormsModule } from '@angular/forms';
 import { AuthService } from '../../../core/service/auth.service';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { BANNED_WORDS } from '../../../shared/consts';
 
 @Component({
   selector: 'app-post-details',
@@ -19,8 +20,9 @@ export class PostDetailsComponent implements OnInit {
   isLoading = true;
   error: string | null = null;
   newCommentContent: string = '';
+  bannedWords = BANNED_WORDS
 
-  private bannedWords: string[] = ['idiota', 'estupido', 'feo', 'palabrota', 'mierda', 'puta'];
+
 
   constructor(
     private route: ActivatedRoute,

@@ -195,8 +195,7 @@
 }
 
 .btn-back:hover span {
-  color: #0a110a;
-  background-color: transparent;
+  color: #ffffff;
 }
 
 @keyframes glitch-anim-1 {
