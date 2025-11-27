@@ -12,7 +12,7 @@ import { EditProfileComponent } from './features/profile/edit-profile/edit-profi
 import { roleGuard } from './core/guards/role.guard';
 import { authGuard } from './core/guards/auth.guard';
 import { ProductCreateComponent } from './features/profile/admin-profile/productCreate/productCreate.component';
-import { ProductEditComponent } from './features/profile/admin-profile/productEdit/productEdit.component';
+import { ProductEditComponent } from './features/profile/admin-profile/productCRUD/productEdit/productEdit.component';
 import { ProductListComponent } from './features/profile/admin-profile/productList/productList.component';
 import { UserListComponent } from './features/profile/admin-profile/userCRUD/userList/userList.component';
 import { UserCreateComponent } from './features/profile/admin-profile/userCRUD/userCreate/userCreate.component';
@@ -28,7 +28,7 @@ import { PostModerationComponent } from './features/profile/admin-profile/admin-
 import { TopicModerationListComponent } from './features/forum/topicModerationList/topicModerationList.component';
 import { PostEditComponent } from './features/forum/postEdit/postEdit.component';
 import { TopicModerationDetailComponent } from './features/profile/admin-profile/topicCRUD/topicModeration/topicModerationDetail.component';
-import { CartComponent } from './features/forum/cart/cart.component';
+import { CartComponent } from './features/cart/cart.component';
 
 export const routes: Routes = [
   { path: 'login', component: LoginComponent },

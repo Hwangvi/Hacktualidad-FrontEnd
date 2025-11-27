@@ -1,33 +1,54 @@
 <div class="posibilidades-container">
-  <h1>Echa un vistazo a los servicios que ofrecemos</h1>
+  <h1 class="glitch-title">
+    NUESTROS SERVICIOS // <span class="blink">SYSTEM STATUS: ONLINE</span>
+  </h1>
 
   <div id="foro" class="posibilidad-card">
-    <img src="/images/foro.jpg" alt="Imagen representativa del foro">
+    <div class="img-wrapper">
+      <img src="/images/foro.jpg" alt="Foro Hacking" />
+      <div class="scan-line"></div>
+    </div>
     <div class="card-content">
-      <h3>Foro de la comunidad</h3>
-      <p>Un maravilloso foro donde podrás discutir todo tipo de Topics del mundo del <span class="hacking">hacking</span>. ¿Alguna vez has tenido dudas sobre este maravilloso mundo? ¡Entra e infórmate! </p>
-      <a routerLink="/forum" class="card-link">Entrar al foro</a>
+      <h3>FORO DE LA COMUNIDAD</h3>
+      <div class="divider"></div>
+      <p>
+        Un entorno encriptado donde discutir <span class="highlight">topics</span> del mundo del
+        <span class="hacking">hacking</span>. ¿Dudas sobre vulnerabilidades? Inicia el protocolo de
+        comunicación.
+      </p>
+      <a routerLink="/forum" class="btn-neon">ACCEDER AL FORO</a>
     </div>
   </div>
 
-  <div id="venta" class="posibilidad-card">
-    <img src="/images/productos.jpg" alt="Imagen representativa de la tienda">
+  <div id="venta" class="posibilidad-card reverse">
+    <div class="img-wrapper">
+      <img src="/images/productos.jpg" alt="Tienda Hacking" />
+      <div class="scan-line"></div>
+    </div>
     <div class="card-content">
-      <h3>Venta de Productos</h3>
-      <p>Todos los productos de Hacking al alcance de tu man
-
-        o (y de tu bolsillo). <br>Explora nuestra tienda y encuentra lo que necesitas.</p>
-      <a routerLink="/tienda" class="card-link">Ir a la tienda</a>
+      <h3>BLACK_MARKET</h3>
+      <div class="divider"></div>
+      <p>
+        Hardware y Software de penetración al alcance de tu mano.<br />Explora nuestro inventario y
+        adquiere las herramientas necesarias para la misión.
+      </p>
+      <a routerLink="/tienda" class="btn-neon red">IR A LA TIENDA</a>
     </div>
   </div>
 
   <div id="noticias" class="posibilidad-card" *ngIf="isLoggedIn">
-    <img src="/images/perfil.jpg" alt="Imagen representativa de las noticias">
+    <div class="img-wrapper">
+      <img src="/images/perfil.jpg" alt="Perfil Usuario" />
+      <div class="scan-line"></div>
+    </div>
     <div class="card-content">
-      <h3>Mi perfil</h3>
-      <p>Accede a tu perfil y modifica tus datos <br> Recuerda protegerlos, los hackers pueden estar en cualquier lado </p>
-      <a [routerLink]="profileLink" class="card-link">Ir a mi perfil</a>
+      <h3>ACCEDE A TU PERFIL</h3>
+      <div class="divider"></div>
+      <p>
+        Accede a tu base de datos personal.<br />Recuerda cifrar tu identidad, los ojos ajenos están
+        en todas partes.
+      </p>
+      <a [routerLink]="profileLink" class="btn-neon green">GESTIONAR DATOS</a>
     </div>
   </div>
-
 </div>

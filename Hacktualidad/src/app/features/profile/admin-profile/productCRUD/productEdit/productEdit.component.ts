@@ -1,11 +1,11 @@
-import { Product } from './../../../../shared/interfaces/Product';
+import { Product } from '../../../../../shared/interfaces/Product';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { ProductService } from '../../../../core/service/product.service';
-import { Category } from '../../../../shared/interfaces/Category';
-import { CategoryService } from '../../../../core/service/Category.service';
+import { ProductService } from '../../../../../core/service/product.service';
+import { Category } from '../../../../../shared/interfaces/Category';
+import { CategoryService } from '../../../../../core/service/Category.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -94,26 +94,33 @@ export class ProductEditComponent implements OnInit {
     }
 
     this.productService.updateProduct(this.editableProduct.productId, formData).subscribe({
-      next: () => {
-        Swal.fire({
-          title: '¡Actualizado!',
-          text: 'El producto ha sido modificado correctamente.',
-          icon: 'success',
-          timer: 2000,
-          showConfirmButton: false,
-        }).then(() => {
-          this.router.navigate(['/profile/admin/products/list']);
-        });
-      },
-      error: (err) => {
-        console.error('Error al actualizar el producto:', err);
-        if (err.status === 400) {
-          this.errorMessage = 'Los datos enviados son inválidos. Revisa el formulario.';
-        } else {
-          this.errorMessage = 'No se pudo actualizar el producto. Por favor, inténtalo de nuevo.';
-        }
-      },
-    });
+    next: () => {
+      Swal.fire({
+        title: '¡SISTEMA ACTUALIZADO!',
+        text: 'Los datos del producto han sido reescritos correctamente.',
+        icon: 'success',
+        timer: 2000,
+        showConfirmButton: false,
+        background: '#141414',
+        color: '#00ffcc',
+        iconColor: '#00ffcc'
+      }).then(() => {
+        this.router.navigate(['/profile/admin/products/list']);
+      });
+    },
+    error: (err) => {
+      console.error('Error al actualizar:', err);
+      Swal.fire({
+        title: 'ERROR CRÍTICO',
+        text: err.status === 400 ? 'Datos corruptos o inválidos.' : 'Fallo en la conexión con el servidor.',
+        icon: 'error',
+        background: '#141414',
+        color: '#ff3333',
+        confirmButtonColor: '#ff3333',
+        iconColor: '#ff3333'
+      });
+    },
+  });;
   }
 
   onCancel(): void {

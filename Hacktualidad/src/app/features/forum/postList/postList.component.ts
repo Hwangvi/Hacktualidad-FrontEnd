@@ -8,7 +8,7 @@ import { CommonModule } from '@angular/common';
   selector: 'app-post-list',
   templateUrl: './postList.component.html',
   styleUrls: ['./postList.component.css'],
-  imports: [CommonModule, RouterLink]
+  imports: [CommonModule, RouterLink],
 })
 export class PostListComponent implements OnInit {
   posts: Post[] = [];
@@ -19,7 +19,7 @@ export class PostListComponent implements OnInit {
     private route: ActivatedRoute,
     private forumService: ForumService,
     private router: Router
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.topicName = this.route.snapshot.paramMap.get('topicName');
@@ -33,7 +33,7 @@ export class PostListComponent implements OnInit {
         error: (err) => {
           console.error(`Error al cargar posts de ${this.topicName}:`, err);
           this.isLoading = false;
-        }
+        },
       });
     }
   }

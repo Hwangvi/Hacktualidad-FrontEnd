@@ -10,7 +10,7 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './postCreate.component.html',
-  styleUrls: ['./postCreate.component.css']
+  styleUrls: ['./postCreate.component.css'],
 })
 export class PostCreateComponent implements OnInit {
   postForm: FormGroup;
@@ -26,14 +26,14 @@ export class PostCreateComponent implements OnInit {
   ) {
     this.postForm = this.fb.group({
       title: ['', [Validators.required, Validators.minLength(5)]],
-      content: ['', [Validators.required, Validators.minLength(20)]]
+      content: ['', [Validators.required, Validators.minLength(20)]],
     });
   }
 
   ngOnInit(): void {
     this.topicName = this.route.snapshot.paramMap.get('topicName');
     if (!this.topicName) {
-      this.error = "No se ha especificado un tema para el post.";
+      this.error = 'No se ha especificado un tema para el post.';
       console.error('No se encontró topicName en la ruta');
     }
   }
@@ -48,7 +48,7 @@ export class PostCreateComponent implements OnInit {
 
     const postData = {
       title: this.postForm.value.title,
-      content: this.postForm.value.content
+      content: this.postForm.value.content,
     };
 
     this.forumService.createPost(this.topicName, postData).subscribe({
@@ -60,7 +60,7 @@ export class PostCreateComponent implements OnInit {
         console.error('Error al crear el post:', err);
         this.error = 'Hubo un error al crear el post. Inténtalo de nuevo.';
         this.isSubmitting = false;
-      }
+      },
     });
   }
 }

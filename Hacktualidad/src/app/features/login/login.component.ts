@@ -7,27 +7,19 @@ import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-login',
-  imports: [
-    FormsModule,
-    CommonModule,
-    RouterModule
-  ],
+  imports: [FormsModule, CommonModule, RouterModule],
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
-
   credentials = {
     email: '',
-    password: ''
+    password: '',
   };
 
   errorMessage: string | null = null;
 
-  constructor(
-    private authService: AuthService,
-    private router: Router
-  ) { }
+  constructor(private authService: AuthService, private router: Router) {}
 
   onSubmit(): void {
     this.errorMessage = null;
@@ -44,7 +36,7 @@ export class LoginComponent {
       error: (err) => {
         console.error('Error en el login:', err);
         this.errorMessage = 'Email o contraseña incorrectos. Por favor, inténtalo de nuevo.';
-      }
+      },
     });
   }
 }

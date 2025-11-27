@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { RouterLink } from "@angular/router";
+import { RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { ForumService } from '../../../core/service/forum.service';
 import { Topic } from '../../../shared/interfaces/forum';
@@ -8,13 +8,12 @@ import { Topic } from '../../../shared/interfaces/forum';
   selector: 'app-tematicas',
   imports: [RouterLink, CommonModule],
   templateUrl: './tematicas.component.html',
-  styleUrls: ['./tematicas.component.css']
+  styleUrls: ['./tematicas.component.css'],
 })
 export class TematicasComponent implements OnInit {
-
   topics: Topic[] = [];
 
-  constructor(private forumService: ForumService) { }
+  constructor(private forumService: ForumService) {}
 
   ngOnInit() {
     this.forumService.getAllTopics().subscribe({
@@ -22,7 +21,7 @@ export class TematicasComponent implements OnInit {
         this.topics = data;
         console.log('Temáticas cargadas:', this.topics);
       },
-      error: (err) => console.error('Error al cargar las temáticas:', err)
+      error: (err) => console.error('Error al cargar las temáticas:', err),
     });
   }
 }

@@ -5,6 +5,8 @@
   align-items: center;
   min-height: 100vh;
   background-color: #000;
+  background-image: url('/images/matrixAzul.jpg');
+  background-size: cover;
   font-family: 'Fira Code', monospace;
   padding: 20px;
 }

@@ -4,7 +4,7 @@ import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { Cart } from '../../shared/interfaces/Cart';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CartService {
   private apiUrl = 'http://localhost:8080/api/cart';
@@ -14,20 +14,20 @@ export class CartService {
 
   constructor(private http: HttpClient) {
     this.getCart().subscribe({
-      error: () => console.log('Usuario no autenticado o carrito vacío')
+      error: () => console.log('Usuario no autenticado o carrito vacío'),
     });
   }
 
   getCart(): Observable<Cart> {
-    return this.http.get<Cart>(this.apiUrl, { withCredentials: true }).pipe(
-      tap(cart => this.cartSubject.next(cart))
-    );
+    return this.http
+      .get<Cart>(this.apiUrl, { withCredentials: true })
+      .pipe(tap((cart) => this.cartSubject.next(cart)));
   }
 
   addToCart(productId: number): Observable<Cart> {
     const url = `${this.apiUrl}/add/${productId}`;
     return this.http.post<Cart>(url, {}, { withCredentials: true }).pipe(
-      tap(updatedCart => {
+      tap((updatedCart) => {
         this.cartSubject.next(updatedCart);
       })
     );
@@ -36,7 +36,7 @@ export class CartService {
   removeFromCart(productId: number): Observable<Cart> {
     const url = `${this.apiUrl}/remove/${productId}`;
     return this.http.delete<Cart>(url, { withCredentials: true }).pipe(
-      tap(updatedCart => {
+      tap((updatedCart) => {
         this.cartSubject.next(updatedCart);
       })
     );
@@ -44,5 +44,13 @@ export class CartService {
 
   getCurrentCartValue(): Cart | null {
     return this.cartSubject.value;
+  }
+
+  checkout(): Observable<void> {
+    return this.http.post<void>(`${this.apiUrl}/checkout`, {}, { withCredentials: true }).pipe(
+      tap(() => {
+        this.cartSubject.next(null);
+      })
+    );
   }
 }

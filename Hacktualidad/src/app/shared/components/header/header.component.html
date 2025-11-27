@@ -4,21 +4,30 @@
     <h1><span class="hack">Hack</span><span class="tualidad">tualidad</span></h1>
   </div>
 
-  <div class="others">
+  <div class="hamburger" (click)="toggleMenu()" [class.active]="isMobileMenuOpen">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+  <div class="others" [class.mobile-active]="isMobileMenuOpen">
     <nav>
-      <a routerLink="/home" routerLinkActive="active">Inicio</a>
-      <a routerLink="/tienda" routerLinkActive="active">Tienda</a>
-      <a routerLink="/forum" routerLinkActive="active">Foro</a>
+      <a routerLink="/home" routerLinkActive="active" (click)="closeMenu()">Inicio</a>
+      <a routerLink="/tienda" routerLinkActive="active" (click)="closeMenu()">Tienda</a>
+      <a routerLink="/forum" routerLinkActive="active" (click)="closeMenu()">Foro</a>
 
-      <a *ngIf="isLoggedIn" [routerLink]="profileLink" routerLinkActive="active">Mi perfil</a>
+      <a *ngIf="isLoggedIn" [routerLink]="profileLink" routerLinkActive="active" (click)="closeMenu()">Mi perfil</a>
 
-      <a routerLink="/cart" routerLinkActive="active">
-       CARRITO <span *ngIf="cartItemCount > 0" style="color:#00ffcc">[{{cartItemCount}}]</span>
+      <a routerLink="/cart" routerLinkActive="active" (click)="closeMenu()">
+       CARRITO <span *ngIf="cartItemCount > 0" class="cart-count">[{{cartItemCount}}]</span>
       </a>
 
-      <a *ngIf="isLoggedIn" (click)="logout()" style="cursor: pointer;">Cerrar Sesión</a>
-
-      <a *ngIf="!isLoggedIn" routerLink="/login" routerLinkActive="active">Iniciar Sesión</a>
+      <div class="auth-buttons">
+        <a *ngIf="isLoggedIn" (click)="logout()" class="logout-btn">Cerrar Sesión</a>
+        <a *ngIf="!isLoggedIn" routerLink="/login" routerLinkActive="active" (click)="closeMenu()">Iniciar Sesión</a>
+      </div>
     </nav>
   </div>
+
+  <div class="overlay" *ngIf="isMobileMenuOpen" (click)="closeMenu()"></div>
 </header>

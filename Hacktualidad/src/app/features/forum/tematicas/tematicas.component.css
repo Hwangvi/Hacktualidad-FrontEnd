@@ -14,10 +14,9 @@ h1 {
   text-align: center;
   font-family: 'BadSignal', sans-serif;
   font-size: 3rem;
-  margin-top: 40px;
+  margin-top: 80px;
   color: #e0f2f1;
 }
-
 
 .grid-container {
   display: grid;
@@ -118,7 +117,6 @@ h1 {
 
 @media (max-width: 768px) {
   .grid-container {
-
     grid-template-columns: 1fr;
     width: 90%;
     gap: 25px;

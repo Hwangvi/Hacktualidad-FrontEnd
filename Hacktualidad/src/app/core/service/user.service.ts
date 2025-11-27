@@ -5,13 +5,12 @@ import { User } from '../../shared/interfaces/User';
 import { AdminUserCreateRequest } from '../../shared/interfaces/userRegisterInAdmin';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class UserService {
-
   private apiUrl = 'http://localhost:8080/api/users';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   getUsers(): Observable<User[]> {
     return this.http.get<User[]>(this.apiUrl, { withCredentials: true });

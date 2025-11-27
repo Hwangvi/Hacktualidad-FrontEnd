@@ -4,13 +4,12 @@ import { Observable } from 'rxjs';
 import { Product } from '../../shared/interfaces/Product';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ProductService {
-
   private apiUrl = 'http://localhost:8080/api/products';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   getProducts(): Observable<Product[]> {
     return this.http.get<Product[]>(this.apiUrl);
@@ -21,14 +20,14 @@ export class ProductService {
   }
 
   createProduct(formData: FormData): Observable<Product> {
-    return this.http.post<Product>(this.apiUrl, formData, {withCredentials: true});
+    return this.http.post<Product>(this.apiUrl, formData, { withCredentials: true });
   }
 
   updateProduct(id: number, formData: FormData): Observable<Product> {
-    return this.http.put<Product>(`${this.apiUrl}/${id}`, formData, {withCredentials: true});
+    return this.http.put<Product>(`${this.apiUrl}/${id}`, formData, { withCredentials: true });
   }
 
   deleteProduct(id: number): Observable<any> {
-    return this.http.delete(`${this.apiUrl}/${id}`, {withCredentials: true});
+    return this.http.delete(`${this.apiUrl}/${id}`, { withCredentials: true });
   }
 }

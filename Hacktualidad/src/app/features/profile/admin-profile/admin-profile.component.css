@@ -1,12 +1,12 @@
 .profile-container {
+  margin-top: 150px;
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 90vh;
+  min-height: 60vh;
   background-color: #000000;
   font-family: 'Share Tech Mono', monospace;
   padding: 20px;
-  margin-top: 60px;
 }
 
 

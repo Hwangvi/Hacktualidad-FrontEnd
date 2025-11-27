@@ -109,6 +109,7 @@
   transition: all 0.3s ease;
   text-decoration: none;
   text-align: center;
+  background-color: #0a0a0a;;
 }
 
 .btn-edit {

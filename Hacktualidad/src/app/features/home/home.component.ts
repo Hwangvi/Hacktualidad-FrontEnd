@@ -6,13 +6,10 @@ import { PosibilidadesComponent } from './posibilidades/posibilidades.component'
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
-  imports: [HeroComponent, PosibilidadesComponent]
+  imports: [HeroComponent, PosibilidadesComponent],
 })
 export class HomeComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }

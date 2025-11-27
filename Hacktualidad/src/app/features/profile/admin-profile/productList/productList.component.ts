@@ -33,35 +33,49 @@ export class ProductListComponent implements OnInit {
   }
 
   onDeleteProduct(id: number): void {
-    Swal.fire({
-      title: '¿Estás seguro?',
-      text: "Esta acción no se puede revertir.",
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonText: 'Sí, ¡bórralo!',
-      cancelButtonText: 'Cancelar',
-    }).then((result) => {
-      if (result.isConfirmed) {
-        this.productService.deleteProduct(id).subscribe({
-          next: () => {
-            Swal.fire(
-              '¡Eliminado!',
-              'El producto ha sido borrado.',
-              'success'
-            );
-            this.loadProducts();
-          },
-          error: (err) => {
-            console.error('Error al borrar el producto:', err);
-            Swal.fire(
-              'Error',
-              'No se pudo borrar el producto. Inténtalo de nuevo.',
-              'error'
-            );
-          }
-        });
-      }
-    });
+  Swal.fire({
+    title: '¿EJECUTAR BORRADO?',
+    text: "Esta acción eliminará los datos permanentemente. ¿Proceder?",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonText: 'SÍ, BORRAR',
+    cancelButtonText: 'CANCELAR',
+    background: '#141414',
+    color: '#ff3333',
+    iconColor: '#ff3333',
+    confirmButtonColor: '#ff3333',
+    cancelButtonColor: '#333',
+    reverseButtons: true
+  }).then((result) => {
+    if (result.isConfirmed) {
+      this.productService.deleteProduct(id).subscribe({
+        next: () => {
+          // ESTILO HACKER ÉXITO
+          Swal.fire({
+            title: '¡ELIMINADO!',
+            text: 'El archivo ha sido purgado del sistema.',
+            icon: 'success',
+            background: '#141414',
+            color: '#00ffcc',
+            confirmButtonColor: '#00ffcc',
+            iconColor: '#00ffcc'
+          });
+          this.loadProducts();
+        },
+        error: (err) => {
+          console.error('Error al borrar:', err);
+          Swal.fire({
+            title: 'ERROR DE ACCESO',
+            text: 'No se pudo eliminar el producto.',
+            icon: 'error',
+            background: '#141414',
+            color: '#ff3333',
+            confirmButtonColor: '#ff3333'
+          });
+        }
+      });
+    }
+  });
   }
 
   onCancel(): void {

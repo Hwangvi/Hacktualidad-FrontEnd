@@ -46,4 +46,8 @@ export class ForumService {
   getAllPosts(): Observable<Post[]> {
     return this.http.get<Post[]>(`${this.baseUrl}/posts`);
   }
+
+  deleteComment(commentId: number): Observable<void> {
+    return this.http.delete<void>(`${this.baseUrl}/comments/${commentId}`, { withCredentials: true });
+  }
 }

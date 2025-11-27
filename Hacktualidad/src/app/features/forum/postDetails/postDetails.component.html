@@ -77,9 +77,9 @@
     </section>
 
     <div class="page-actions">
-      <button (click)="goBack()" class="btn-back">
+      <a [routerLink]="post.topicName ? ['/forum', post.topicName] : ['/forum']" class="btn-back">
         <span>&lt; Volver a la lista de posts</span>
-      </button>
+      </a>
     </div>
   </div>
 </div>

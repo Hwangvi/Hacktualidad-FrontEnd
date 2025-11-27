@@ -116,7 +116,7 @@
   }
 }
 
-@media (max-width: 492px) {
+@media (max-width: 767px) {
   .spotify-footer {
     padding: 2rem 1rem;
     text-align: center;

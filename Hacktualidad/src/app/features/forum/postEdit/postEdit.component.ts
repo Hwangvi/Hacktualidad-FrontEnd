@@ -11,7 +11,7 @@ import Swal from 'sweetalert2';
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './postEdit.component.html',
-  styleUrls: ['./postEdit.component.css']
+  styleUrls: ['./postEdit.component.css'],
 })
 export class PostEditComponent implements OnInit {
   postForm: FormGroup;
@@ -29,7 +29,7 @@ export class PostEditComponent implements OnInit {
   ) {
     this.postForm = this.fb.group({
       title: ['', [Validators.required, Validators.minLength(5)]],
-      content: ['', [Validators.required, Validators.minLength(20)]]
+      content: ['', [Validators.required, Validators.minLength(20)]],
     });
   }
 
@@ -40,7 +40,7 @@ export class PostEditComponent implements OnInit {
       this.loadPostData();
     } else {
       this.isLoading = false;
-      this.error = "ERROR: No se encontró un ID de post en la URL.";
+      this.error = 'ERROR: No se encontró un ID de post en la URL.';
     }
   }
 
@@ -52,15 +52,15 @@ export class PostEditComponent implements OnInit {
         this.post = data;
         this.postForm.patchValue({
           title: data.title,
-          content: data.content
+          content: data.content,
         });
         this.isLoading = false;
       },
       error: (err) => {
         this.isLoading = false;
-        this.error = "No se pudo cargar el post para editarlo.";
+        this.error = 'No se pudo cargar el post para editarlo.';
         console.error(err);
-      }
+      },
     });
   }
 
@@ -95,10 +95,10 @@ export class PostEditComponent implements OnInit {
           text: 'No se pudo actualizar el post.',
           background: '#0a110a',
           color: '#9affb4',
-          confirmButtonColor: '#ff3333'
+          confirmButtonColor: '#ff3333',
         });
         console.error(err);
-      }
+      },
     });
   }
 

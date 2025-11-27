@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { RouterLink } from "@angular/router";
+import { RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { Subscription } from 'rxjs';
 import { AuthService } from './../../../core/service/auth.service';
@@ -9,15 +9,14 @@ import { User } from '../../../shared/interfaces/User';
   selector: 'app-posibilidades',
   templateUrl: './posibilidades.component.html',
   styleUrls: ['./posibilidades.component.css'],
-  imports: [CommonModule, RouterLink]
+  imports: [CommonModule, RouterLink],
 })
 export class PosibilidadesComponent implements OnInit, OnDestroy {
-
   isLoggedIn: boolean = false;
   profileLink: string = '/login';
   private userSubscription!: Subscription;
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService) {}
 
   ngOnInit(): void {
     this.userSubscription = this.authService.currentUser$.subscribe((user: User | null) => {

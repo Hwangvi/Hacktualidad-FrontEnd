@@ -19,6 +19,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
   profileLink: string = '/login';
   cartItemCount: number = 0;
 
+  isMobileMenuOpen: boolean = false;
+
   private userSubscription!: Subscription;
   private cartSubscription!: Subscription;
 
@@ -56,7 +58,16 @@ export class HeaderComponent implements OnInit, OnDestroy {
     });
   }
 
+  toggleMenu(): void {
+    this.isMobileMenuOpen = !this.isMobileMenuOpen;
+  }
+
+  closeMenu(): void {
+    this.isMobileMenuOpen = false;
+  }
+
   logout(): void {
+    this.closeMenu();
     this.authService.logout();
     this.cartItemCount = 0;
     this.router.navigate(['/login']);
