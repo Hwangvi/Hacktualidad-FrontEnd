@@ -24,10 +24,19 @@
           <td>{{ post.author.name }}</td>
           <td>{{ post.topicName }}</td>
           <td>{{ post.publicationDate | date:'dd/MM/yy HH:mm' }}</td>
+
+
           <td class="actions-cell">
+            <a [routerLink]="['/profile/admin/forum/moderate/posts', post.postId, 'comments']"
+               class="admin-btn"
+               style="border-color: #00ccff; color: #00ccff; margin-right: 10px;">
+               Ver Comentarios
+            </a>
+
             <a [routerLink]="['/posts', post.postId, 'edit']" class="admin-btn btn-edit">Editar</a>
             <button (click)="deletePost(post.postId)" class="admin-btn btn-delete">Borrar</button>
           </td>
+
         </tr>
       </tbody>
     </table>

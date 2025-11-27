@@ -19,9 +19,7 @@
           "options": {
             "outputPath": "dist/Hacktualidad",
             "index": "src/index.html",
-            "polyfills": [
-              "zone.js"
-            ],
+            "polyfills": ["zone.js"],
             "browser": "src/main.ts",
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
@@ -84,7 +82,8 @@
               {
                 "glob": "**/*",
                 "input": "public"
-              }
+              },
+              "src/app/assets"
             ],
             "styles": ["src/styles.scss"]
           }

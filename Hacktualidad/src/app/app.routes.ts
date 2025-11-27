@@ -29,6 +29,7 @@ import { TopicModerationListComponent } from './features/forum/topicModerationLi
 import { PostEditComponent } from './features/forum/postEdit/postEdit.component';
 import { TopicModerationDetailComponent } from './features/profile/admin-profile/topicCRUD/topicModeration/topicModerationDetail.component';
 import { CartComponent } from './features/cart/cart.component';
+import { CommentModerationComponent } from './features/forum/CommentModeration/CommentModeration.component';
 
 export const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -39,7 +40,6 @@ export const routes: Routes = [
   { path: 'tienda', component: TiendaComponent, canActivate: [authGuard] },
   { path: 'tienda/:id', component: ProductDetailComponent, canActivate: [authGuard] },
 
-  // --- RUTA NUEVA PARA EL CARRITO ---
   { path: 'cart', component: CartComponent, canActivate: [authGuard] },
 
   { path: 'forum', component: ForumComponent, canActivate: [authGuard] },
@@ -149,6 +149,12 @@ export const routes: Routes = [
         canActivate: [authGuard, roleGuard],
         data: { expectedRole: 'ADMIN' },
       },
+      {
+          path: 'admin/forum/moderate/posts/:postId/comments',
+          component: CommentModerationComponent,
+          canActivate: [authGuard, roleGuard],
+          data: { expectedRole: 'ADMIN' },
+        },
     ],
   },
 

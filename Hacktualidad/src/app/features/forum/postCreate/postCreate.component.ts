@@ -1,4 +1,3 @@
-// src/app/features/forum/post-create/post-create.component.ts
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -35,6 +34,14 @@ export class PostCreateComponent implements OnInit {
     if (!this.topicName) {
       this.error = 'No se ha especificado un tema para el post.';
       console.error('No se encontró topicName en la ruta');
+    }
+  }
+
+  goBack(): void {
+    if (this.topicName) {
+      this.router.navigate(['/forum', this.topicName]);
+    } else {
+      this.router.navigate(['/forum']);
     }
   }
 

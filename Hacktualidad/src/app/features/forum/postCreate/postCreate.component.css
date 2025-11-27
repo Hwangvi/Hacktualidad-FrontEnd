@@ -136,6 +136,28 @@ button[type='submit']:disabled {
   margin: 0;
   font-family: 'Fira Code', monospace;
 }
+.btn-back {
+  width: 100%;
+  padding: 12px;
+  margin-top: 20px;
+  background-color: transparent;
+  border: 1px dashed #0f0;
+  color: #0f0;
+  font-size: 1rem;
+  font-weight: 600;
+  font-family: 'Share Tech Mono', monospace;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-back:hover {
+  background-color: rgba(0, 255, 0, 0.1);
+  box-shadow: 0 0 15px rgba(0, 255, 0, 0.3);
+  border-style: solid;
+  text-shadow: 0 0 5px #0f0;
+}
 
 @keyframes flicker {
   0%,

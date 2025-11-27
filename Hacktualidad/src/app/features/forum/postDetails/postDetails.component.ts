@@ -20,6 +20,8 @@ export class PostDetailsComponent implements OnInit {
   error: string | null = null;
   newCommentContent: string = '';
 
+  private bannedWords: string[] = ['idiota', 'estupido', 'feo', 'palabrota', 'mierda', 'puta'];
+
   constructor(
     private route: ActivatedRoute,
     private forumService: ForumService,
@@ -40,8 +42,7 @@ export class PostDetailsComponent implements OnInit {
           this.isLoading = false;
         },
         error: (err) => {
-          this.error =
-            'No se pudo cargar el post. Es posible que no exista o haya ocurrido un error.';
+          this.error = 'No se pudo cargar el post.';
           this.isLoading = false;
           console.error(err);
         },
@@ -49,8 +50,30 @@ export class PostDetailsComponent implements OnInit {
     }
   }
 
+  private containsBadWords(text: string): boolean {
+    const regex = new RegExp(`\\b(${this.bannedWords.join('|')})\\b`, 'i');
+    return regex.test(text);
+  }
+
   addComment(): void {
     if (!this.newCommentContent.trim() || !this.post) {
+      return;
+    }
+
+    if (this.containsBadWords(this.newCommentContent)) {
+      Swal.fire({
+        title: 'LENGUAJE NO PERMITIDO',
+        text: 'El sistema ha detectado vocabulario soez o prohibido. Por favor, piensa dos veces antes de hacer un comentario.',
+        icon: 'warning',
+        background: '#0a0a0a',
+        color: '#ff3333',
+        confirmButtonColor: '#ff3333',
+        confirmButtonText: '[ REFORMULAR ]',
+        iconColor: '#ff3333',
+        customClass: {
+          popup: 'hacker-popup'
+        }
+      });
       return;
     }
 
@@ -60,10 +83,26 @@ export class PostDetailsComponent implements OnInit {
         next: (newComment) => {
           this.post?.comments.push(newComment);
           this.newCommentContent = '';
+
+          const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            background: '#0a0a0a',
+            color: '#00ff00'
+          });
+          Toast.fire({ icon: 'success', title: 'Transmisión enviada' });
         },
         error: (err) => {
           console.error('Error al añadir el comentario:', err);
-          alert('Hubo un error al enviar tu comentario.');
+          Swal.fire({
+            title: 'ERROR DE TRANSMISIÓN',
+            text: 'Hubo un error al enviar tu comentario.',
+            icon: 'error',
+            background: '#0a0a0a',
+            color: '#ff3333'
+          });
         },
       });
   }
@@ -72,17 +111,28 @@ export class PostDetailsComponent implements OnInit {
     if (!this.post) return;
 
     Swal.fire({
-      title: '¿Estás seguro?',
-      text: 'No podrás revertir el borrado de este post.',
+      title: '¿BORRAR DATOS?',
+      text: 'No podrás recuperar este post una vez eliminado.',
       icon: 'warning',
       showCancelButton: true,
-      confirmButtonText: 'Sí, ¡bórralo!',
-      cancelButtonText: 'Cancelar',
+      confirmButtonText: 'SÍ, BORRAR',
+      cancelButtonText: 'CANCELAR',
+      background: '#0a0a0a',
+      color: '#ff3333',
+      confirmButtonColor: '#ff3333',
+      cancelButtonColor: '#333'
     }).then((result) => {
       if (result.isConfirmed) {
         this.forumService.deletePost(this.post!.postId).subscribe({
           next: () => {
-            Swal.fire('¡Borrado!', 'El post ha sido eliminado.', 'success');
+            Swal.fire({
+              title: 'ELIMINADO',
+              text: 'El post ha sido purgado.',
+              icon: 'success',
+              background: '#0a0a0a',
+              color: '#00ff00',
+              confirmButtonColor: '#00ff00'
+            });
             this.router.navigate(['/forum']);
           },
           error: (err) => {
@@ -93,12 +143,4 @@ export class PostDetailsComponent implements OnInit {
       }
     });
   }
-
-  goBack(): void {
-  if (this.post && this.post.topicName) {
-    this.router.navigate(['/forum', this.post.topicName]);
-  } else {
-    this.router.navigate(['/forum']);
-  }
-}
 }
