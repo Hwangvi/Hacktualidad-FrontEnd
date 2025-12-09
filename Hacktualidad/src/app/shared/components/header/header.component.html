@@ -12,13 +12,13 @@
 
   <div class="others" [class.mobile-active]="isMobileMenuOpen">
     <nav>
-      <a routerLink="/home" routerLinkActive="active" (click)="closeMenu()">Inicio</a>
-      <a routerLink="/tienda" routerLinkActive="active" (click)="closeMenu()">Tienda</a>
-      <a routerLink="/forum" routerLinkActive="active" (click)="closeMenu()">Foro</a>
+      <a *ngIf="isLoggedIn" routerLink="/home" routerLinkActive="active" (click)="closeMenu()">Inicio</a>
+      <a *ngIf="isLoggedIn" routerLink="/shop" routerLinkActive="active" (click)="closeMenu()">Tienda</a>
+      <a *ngIf="isLoggedIn" routerLink="/forum" routerLinkActive="active" (click)="closeMenu()">Foro</a>
 
       <a *ngIf="isLoggedIn" [routerLink]="profileLink" routerLinkActive="active" (click)="closeMenu()">Mi perfil</a>
 
-      <a routerLink="/cart" routerLinkActive="active" (click)="closeMenu()">
+      <a *ngIf="isLoggedIn" routerLink="/cart" routerLinkActive="active" (click)="closeMenu()">
        CARRITO <span *ngIf="cartItemCount > 0" class="cart-count">[{{cartItemCount}}]</span>
       </a>
 

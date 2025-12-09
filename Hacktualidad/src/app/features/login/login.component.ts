@@ -23,19 +23,27 @@ export class LoginComponent {
 
   onSubmit(): void {
     this.errorMessage = null;
+
     this.authService.login(this.credentials).subscribe({
       next: (response) => {
         console.log('Login exitoso:', response);
 
         if (response.role === 'ADMIN') {
-          this.router.navigate(['/profile/admin']);
+          this.router.navigate(['/home']);
         } else {
-          this.router.navigate(['/profile/user']);
+          this.router.navigate(['/home']);
         }
       },
       error: (err) => {
         console.error('Error en el login:', err);
-        this.errorMessage = 'Email o contraseña incorrectos. Por favor, inténtalo de nuevo.';
+
+        if (err.status === 0) {
+          this.errorMessage = 'No hay conexión con el servidor. Verifica tu internet o inténtalo más tarde.';
+        } else if (err.status === 401 || err.status === 403) {
+          this.errorMessage = 'Email o contraseña incorrectos. Por favor, inténtalo de nuevo.';
+        } else {
+          this.errorMessage = 'Ocurrió un error inesperado. Por favor, contacta con soporte.';
+        }
       },
     });
   }

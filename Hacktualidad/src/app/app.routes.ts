@@ -2,16 +2,16 @@ import { Routes } from '@angular/router';
 import { HomeComponent } from './features/home/home.component';
 import { ForumComponent } from './features/forum/forum.component';
 import { LoginComponent } from './features/login/login.component';
-import { TiendaComponent } from './features/tienda/tienda.component';
-import { ProductDetailComponent } from './features/tienda/ProductDetail/ProductDetail.component';
-import { RegistroComponent } from './features/registro/registro.component';
+import { ShopComponent } from './features/shop/shop.component';
+import { ProductDetailComponent } from './features/shop/ProductDetail/ProductDetail.component';
+import { RegisterComponent } from './features/register/register.component';
 import { UserProfileComponent } from './features/profile/user-profile/user-profile.component';
 import { AdminProfileComponent } from './features/profile/admin-profile/admin-profile.component';
 import { ProfileLayoutComponent } from './features/profile/profile-layout/profile-layout.component';
 import { EditProfileComponent } from './features/profile/edit-profile/edit-profile.component';
 import { roleGuard } from './core/guards/role.guard';
 import { authGuard } from './core/guards/auth.guard';
-import { ProductCreateComponent } from './features/profile/admin-profile/productCreate/productCreate.component';
+import { ProductCreateComponent } from './features/profile/admin-profile/productCRUD/productCreate/productCreate.component';
 import { ProductEditComponent } from './features/profile/admin-profile/productCRUD/productEdit/productEdit.component';
 import { ProductListComponent } from './features/profile/admin-profile/productList/productList.component';
 import { UserListComponent } from './features/profile/admin-profile/userCRUD/userList/userList.component';
@@ -29,16 +29,18 @@ import { TopicModerationListComponent } from './features/forum/topicModerationLi
 import { PostEditComponent } from './features/forum/postEdit/postEdit.component';
 import { TopicModerationDetailComponent } from './features/profile/admin-profile/topicCRUD/topicModeration/topicModerationDetail.component';
 import { CartComponent } from './features/cart/cart.component';
-import { CommentModerationComponent } from './features/forum/CommentModeration/CommentModeration.component';
+import { CommentModerationComponent } from './features/forum/commentModeration/commentModeration.component';
+import { LandingHomeComponent } from './shared/components/landingHome/landingHome.component';
 
 export const routes: Routes = [
+  { path: 'landingHome', component: LandingHomeComponent},
   { path: 'login', component: LoginComponent },
-  { path: 'registro', component: RegistroComponent },
-  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: 'register', component: RegisterComponent },
+  { path: '', redirectTo: 'landingHome', pathMatch: 'full' },
   { path: 'home', component: HomeComponent, canActivate: [authGuard] },
 
-  { path: 'tienda', component: TiendaComponent, canActivate: [authGuard] },
-  { path: 'tienda/:id', component: ProductDetailComponent, canActivate: [authGuard] },
+  { path: 'shop', component: ShopComponent, canActivate: [authGuard] },
+  { path: 'shop/:id', component: ProductDetailComponent, canActivate: [authGuard] },
 
   { path: 'cart', component: CartComponent, canActivate: [authGuard] },
 
@@ -158,5 +160,5 @@ export const routes: Routes = [
     ],
   },
 
-  { path: '**', redirectTo: 'home' },
+  { path: '**', redirectTo: 'landingHome' },
 ];

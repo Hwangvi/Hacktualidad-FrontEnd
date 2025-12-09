@@ -3,9 +3,9 @@ import { Router, RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import Swal from 'sweetalert2';
-import { ProductService } from '../../../../core/service/product.service';
-import { CategoryService } from '../../../../core/service/Category.service';
-import { Category } from '../../../../shared/interfaces/Category';
+import { ProductService } from '../../../../../core/service/product.service';
+import { CategoryService } from '../../../../../core/service/Category.service';
+import { Category } from '../../../../../shared/interfaces/Category';
 
 @Component({
   selector: 'app-product-create',

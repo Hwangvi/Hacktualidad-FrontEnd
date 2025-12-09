@@ -32,7 +32,7 @@
 
   <a class="product-card"
      *ngFor="let product of paginatedProducts; let i = index"
-     [routerLink]="['/tienda', product.productId]"
+     [routerLink]="['/shop', product.productId]"
      [style.--i]="i">
 
      <div class="card-media">

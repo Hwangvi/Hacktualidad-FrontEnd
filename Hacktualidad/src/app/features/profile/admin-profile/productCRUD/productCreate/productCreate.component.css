@@ -212,6 +212,64 @@ select option {
   font-family: 'Fira Code', monospace;
   padding: 10px;
 }
+@media (max-width: 768px) {
+
+
+  :host {
+    align-items: flex-start;
+    padding-top: 10px;
+  }
+
+
+  .form-wrapper {
+    margin-top: 90px;
+    margin-bottom: 40px;
+    padding: 25px 15px;
+    width: 95%;
+    max-width: none;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+  }
+  input,
+  textarea,
+  select {
+    font-size: 16px;
+    padding: 10px;
+  }
+
+
+  .file-upload-wrapper {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 15px;
+  }
+
+  .btn-file-upload {
+    width: 100%;
+    text-align: center;
+    box-sizing: border-box;
+    padding: 15px;
+  }
+
+  .image-preview {
+    margin: 0 auto;
+    width: 100px;
+    height: 100px;
+  }
+
+
+  button[type="submit"] {
+    padding: 15px;
+    font-size: 1rem;
+  }
+
+  .select-wrapper::after {
+    right: 10px;
+  }
+}
 
 @keyframes flicker {
   0%, 18%, 22%, 25%, 53%, 57%, 100% {

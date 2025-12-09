@@ -18,17 +18,14 @@ import { CategoryColorPipe } from '../../../shared/pipes/categoryColor.pipe';
 })
 export class ProductListComponent implements OnInit, OnDestroy {
 
-  // Datos
   allProducts: Product[] = [];
   products: Product[] = [];
   paginatedProducts: Product[] = [];
   categories: Category[] = [];
 
-  // Filtros
   searchTerm: string = '';
   selectedCategoryId: string = '';
 
-  // Paginación
   currentPage: number = 1;
   itemsPerPage: number = 10;
 

@@ -59,17 +59,31 @@ export class PostModerationComponent implements OnInit {
       icon: 'warning',
       showCancelButton: true,
       confirmButtonText: 'Sí, borrar',
-      cancelButtonText: 'Cancelar'
+      cancelButtonText: 'Cancelar',
+      background: '#19191a',
+      color: '#0a9400ff'
     }).then((result) => {
       if (result.isConfirmed) {
         this.forumService.deletePost(postId).subscribe({
           next: () => {
             this.posts = this.posts.filter(p => p.postId !== postId);
-            Swal.fire('Eliminado', 'El post ha sido borrado.', 'success');
+            Swal.fire({
+              title: 'Eliminado',
+              text: 'El post ha sido borrado.',
+              icon: 'success',
+              background: '#19191a',
+              color: '#ffffff'
+            });
           },
           error: (err) => {
             console.error('Error al borrar el post', err);
-            Swal.fire('Error', 'No se pudo borrar el post.', 'error');
+            ({
+              title: 'Error',
+              text: 'No se pudo borrar el post.',
+              icon: 'error',
+              background: '#19191a',
+              color: '#ffffff'
+            });
           }
         });
       }

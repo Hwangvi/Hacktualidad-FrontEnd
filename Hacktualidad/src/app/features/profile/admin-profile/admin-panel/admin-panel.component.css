@@ -128,6 +128,55 @@
   border-color: #ff0055;
 }
 
+@media (max-width: 768px) {
+
+  .panel-container {
+    padding: 20px 10px;
+    align-items: flex-start;
+    min-height: 100vh;
+  }
+
+  .admin-management-panel {
+    padding: 15px;
+    width: 100%;
+    margin-bottom: 80px;
+  }
+
+  .management-section {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 15px;
+    text-align: center;
+  }
+
+  .management-section h3 {
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+  }
+
+  .management-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+  }
+
+  .admin-btn {
+    width: 90%;
+    padding: 12px;
+    font-size: 1rem;
+  }
+
+  .glitch {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    word-wrap: break-word;
+  }
+
+  .separator {
+    margin: 20px 0;
+  }
+}
 @keyframes glitch-anim-1 {
   0% {
     clip: rect(42px, 9999px, 44px, 0);

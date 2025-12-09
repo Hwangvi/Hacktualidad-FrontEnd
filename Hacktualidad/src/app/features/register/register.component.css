@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&display=swap');
+
 :host {
   display: flex;
   justify-content: center;
@@ -7,11 +8,15 @@
   background-color: #000;
   background-image: url('/images/matrixAzul.jpg');
   background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
   font-family: 'Fira Code', monospace;
   padding: 20px;
+  box-sizing: border-box;
 }
 
 .form-wrapper {
+  margin-top: 30px;
   width: 100%;
   max-width: 500px;
   padding: 40px;
@@ -21,6 +26,7 @@
   box-shadow: 0 0 25px rgba(0, 255, 0, 0.4);
   backdrop-filter: blur(5px);
   color: #0f0;
+  box-sizing: border-box;
 }
 
 h2 {
@@ -31,8 +37,8 @@ h2 {
   text-align: center;
   text-shadow: 0 0 5px #0f0, 0 0 10px #0f0;
   animation: flicker 1.5s infinite alternate;
+  line-height: 1.2;
 }
-
 
 @keyframes flicker {
   0%, 18%, 22%, 25%, 53%, 57%, 100% {
@@ -108,6 +114,14 @@ button[type="submit"]:hover {
   box-shadow: 0 0 20px rgba(0, 255, 0, 0.8);
 }
 
+button:disabled {
+  border-color: #555;
+  color: #555;
+  background-color: transparent;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
 .login-link {
   margin-top: 25px;
   text-align: center;
@@ -142,12 +156,13 @@ button[type="submit"]:hover {
   border: 2px solid #00ff00;
   border-radius: 4px;
   color: #00ff00;
-  font-family: 'Share Tech Mono', monospace;
-  font-size: 1em;
+  font-family: 'Fira Code', monospace;
+  font-size: 0.9em;
   text-transform: uppercase;
   cursor: pointer;
   transition: all 0.3s ease;
   flex-shrink: 0;
+  text-align: center;
 }
 
 .btn-file-upload:hover {
@@ -164,6 +179,8 @@ button[type="submit"]:hover {
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
+  flex-shrink: 0;
 }
 
 .image-preview img {
@@ -171,6 +188,7 @@ button[type="submit"]:hover {
   height: 100%;
   object-fit: cover;
 }
+
 input.ng-invalid.ng-touched {
   border-color: #ff3333;
   box-shadow: 0 0 10px rgba(255, 51, 51, 0.5);
@@ -180,7 +198,7 @@ input.ng-invalid.ng-touched {
 
 .error-msg {
   color: #ff3333;
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   margin-top: 5px;
   font-family: 'Fira Code', monospace;
   text-transform: uppercase;
@@ -188,19 +206,12 @@ input.ng-invalid.ng-touched {
   align-items: center;
   gap: 5px;
   text-shadow: 0 0 5px rgba(255, 51, 51, 0.5);
+  flex-wrap: wrap;
 }
 
 .error-msg::before {
   content: "[!]";
   font-weight: bold;
-}
-
-button:disabled {
-  border-color: #555;
-  color: #555;
-  background-color: transparent;
-  cursor: not-allowed;
-  box-shadow: none;
 }
 
 @keyframes errorShake {
@@ -209,4 +220,47 @@ button:disabled {
   40% { transform: translateX(5px); }
   60% { transform: translateX(-5px); }
   80% { transform: translateX(5px); }
+}
+
+
+@media screen and (max-width: 480px) {
+  :host {
+    padding: 10px;
+    align-items: flex-start;
+    padding-top: 20px;
+    height: auto;
+  }
+
+  .form-wrapper {
+    margin-top: 10px;
+    padding: 25px 15px;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+  }
+
+  input, button[type="submit"] {
+    font-size: 0.95rem;
+    padding: 12px;
+  }
+
+  .file-upload-wrapper {
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+  }
+
+  .btn-file-upload {
+    width: 100%;
+    white-space: normal;
+    box-sizing: border-box;
+    font-size: 0.8rem;
+  }
+
+  .image-preview {
+    width: 100px;
+    height: 100px;
+  }
 }

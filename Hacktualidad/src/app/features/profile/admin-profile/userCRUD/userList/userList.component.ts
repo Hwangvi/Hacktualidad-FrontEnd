@@ -12,10 +12,9 @@ import { startWith, switchMap } from 'rxjs/operators';
   standalone: true,
   imports: [CommonModule, RouterModule],
   templateUrl: './userList.component.html',
-  styleUrls: ['./userList.component.css']
+  styleUrls: ['./userList.component.css'],
 })
 export class UserListComponent implements OnInit {
-
   private refreshTrigger$ = new Subject<void>();
   users$!: Observable<User[]>;
 
@@ -35,11 +34,16 @@ export class UserListComponent implements OnInit {
   onDeleteUser(id: number): void {
     Swal.fire({
       title: '¿Estás seguro?',
-      text: "Esta acción no se puede revertir.",
+      text: 'Esta acción no se puede revertir. El usuario se borrará permanentemente.',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonText: 'Sí, ¡bórralo!',
       cancelButtonText: 'Cancelar',
+      background: '#141414',
+      color: '#ff3333',
+      iconColor: '#ff3333',
+      confirmButtonColor: '#ff3333',
+      cancelButtonColor: '#333',
     }).then((result) => {
       if (result.isConfirmed) {
         this.userService.deleteUser(id).subscribe({
@@ -50,7 +54,7 @@ export class UserListComponent implements OnInit {
           error: (err) => {
             console.error('Error al borrar el usuario:', err);
             Swal.fire('Error', 'No se pudo borrar el usuario. Inténtalo de nuevo.', 'error');
-          }
+          },
         });
       }
     });

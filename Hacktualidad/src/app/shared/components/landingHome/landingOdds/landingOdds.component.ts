@@ -2,16 +2,16 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { Subscription } from 'rxjs';
-import { AuthService } from './../../../core/service/auth.service';
-import { User } from '../../../shared/interfaces/User';
+import { AuthService } from '../../../../core/service/auth.service';
+import { User } from '../../../interfaces/User';
 
 @Component({
-  selector: 'app-posibilidades',
-  templateUrl: './posibilidades.component.html',
-  styleUrls: ['./posibilidades.component.css'],
+  selector: 'app-landingOdds',
+  templateUrl: './landingOdds.component.html',
+  styleUrls: ['./landingOdds.component.css'],
   imports: [CommonModule, RouterLink],
 })
-export class PosibilidadesComponent implements OnInit, OnDestroy {
+export class landingOddsComponent implements OnInit, OnDestroy {
   isLoggedIn: boolean = false;
   profileLink: string = '/login';
   private userSubscription!: Subscription;

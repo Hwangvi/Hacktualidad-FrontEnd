@@ -7,12 +7,12 @@ import { UserService } from '../../core/service/user.service';
 import Swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-registro',
-  templateUrl: './registro.component.html',
-  styleUrls: ['./registro.component.css'],
+  selector: 'app-register',
+  templateUrl: './register.component.html',
+  styleUrls: ['./register.component.css'],
   imports: [CommonModule, FormsModule, RouterModule]
 })
-export class RegistroComponent implements OnInit {
+export class RegisterComponent implements OnInit {
 
   public user: UserRegister = {
     name: '',

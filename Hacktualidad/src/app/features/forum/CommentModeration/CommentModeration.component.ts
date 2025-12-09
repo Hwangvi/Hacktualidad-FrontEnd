@@ -1,4 +1,4 @@
-import { Post, Comment } from './../../../shared/interfaces/forum';
+import { Post, Comment } from '../../../shared/interfaces/forum';
 import { Component, OnInit } from '@angular/core';
 import { CommonModule, Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
