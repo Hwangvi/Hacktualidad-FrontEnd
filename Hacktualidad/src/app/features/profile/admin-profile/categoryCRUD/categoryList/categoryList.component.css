@@ -6,7 +6,7 @@
 
 .list-container {
   max-width: 900px;
-  margin: 4rem auto;
+  margin: 7rem auto;
   padding: 20px;
 }
 
@@ -74,7 +74,8 @@
   margin-top: 2rem;
 }
 
-.header-card, .footer-card {
+.header-card,
+.footer-card {
   background-color: rgba(10, 25, 10, 0.3);
   border: 1px solid #00ff00;
   border-radius: 8px;
@@ -109,7 +110,6 @@
   opacity: 0.8;
 }
 
-
 .actions {
   display: flex;
   flex-direction: column;
@@ -128,6 +128,7 @@
   transition: all 0.3s ease;
   text-decoration: none;
   text-align: center;
+  background-color: #0a0a0a;
 }
 
 .btn-edit {
@@ -137,7 +138,6 @@
 .btn-edit:hover {
   background-color: #ffaa00;
   color: #0a0a0a;
-  box-shadow: 0 0 10px #ffaa00;
 }
 
 .btn-delete {
@@ -147,7 +147,6 @@
 .btn-delete:hover {
   background-color: #ff3333;
   color: #0a0a0a;
-  box-shadow: 0 0 10px #ff3333;
 }
 
 .no-data-message {
@@ -160,10 +159,23 @@
   margin-top: 2rem;
 }
 
-
-
-.color-red { background-color: #ff3333; box-shadow: 0 0 15px -5px #ff3333; }
-.color-blue { background-color: #3377ff; box-shadow: 0 0 15px -5px #3377ff; }
-.color-purple { background-color: #9d33ff; box-shadow: 0 0 15px -5px #9d33ff; }
-.color-yellow { background-color: #ffaa00; box-shadow: 0 0 15px -5px #ffaa00; }
-.color-default { background-color: #00ff00; box-shadow: 0 0 15px -5px #00ff00; }
+.color-red {
+  background-color: #ff3333;
+  box-shadow: 0 0 15px -5px #ff3333;
+}
+.color-blue {
+  background-color: #3377ff;
+  box-shadow: 0 0 15px -5px #3377ff;
+}
+.color-purple {
+  background-color: #9d33ff;
+  box-shadow: 0 0 15px -5px #9d33ff;
+}
+.color-yellow {
+  background-color: #ffaa00;
+  box-shadow: 0 0 15px -5px #ffaa00;
+}
+.color-default {
+  background-color: #00ff00;
+  box-shadow: 0 0 15px -5px #00ff00;
+}

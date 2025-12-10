@@ -8,7 +8,8 @@ header {
   backdrop-filter: blur(10px);
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
+  gap: 2rem;
   padding: 0 3rem;
   z-index: 1000;
   box-sizing: border-box;
@@ -31,35 +32,45 @@ header {
 }
 
 .logo:hover img {
-    transform: scale(1.1);
+  transform: scale(1.1);
 }
 
 .logo h1 {
-  font-family: "BadSignal", sans-serif;
+  font-family: 'BadSignal', sans-serif;
   font-style: italic;
   font-size: 4.2rem;
   margin: 0;
   line-height: 1;
 }
 
-.hack { color: #1d9ab9; text-shadow: 0 0 10px rgba(29, 154, 185, 0.4); }
-.tualidad { color: #ff3333; text-shadow: 0 0 10px rgba(255, 51, 51, 0.4); }
+.hack {
+  color: #1d9ab9;
+  text-shadow: 0 0 10px rgba(29, 154, 185, 0.4);
+}
+.tualidad {
+  color: #ff3333;
+  text-shadow: 0 0 10px rgba(255, 51, 51, 0.4);
+}
 
 .others {
   display: flex;
   align-items: center;
+  flex-grow: 1;
 }
 
 .others nav {
+  width: 100%;
   display: flex;
   align-items: center;
-  gap: 3rem;
+  gap: 2rem;
+  justify-content: flex-end;
+
 }
 
 .auth-buttons {
-    display: flex;
-    gap: 3rem;
-    align-items: center;
+  display: flex;
+  gap: 3rem;
+  align-items: center;
 }
 
 .others a {
@@ -73,13 +84,17 @@ header {
   cursor: pointer;
 }
 
-.others a:hover, .others a.active {
+.others a:hover,
+.others a.active {
   color: #00ff41;
   text-shadow: 0 0 15px rgba(0, 255, 65, 0.8);
   transform: scale(1.05);
 }
 
-.cart-count { color: #00ffcc; font-weight: bold; }
+.cart-count {
+  color: #00ffcc;
+  font-weight: bold;
+}
 
 .hamburger {
   display: none;
@@ -87,6 +102,7 @@ header {
   cursor: pointer;
   gap: 5px;
   z-index: 1002;
+  margin-left: auto;
 }
 
 .hamburger span {
@@ -102,9 +118,15 @@ header {
 }
 
 @media (max-width: 1200px) {
-    .logo h1 { font-size: 3rem; }
-    .others a { font-size: 1.6rem; }
-    .others nav { gap: 1.5rem; }
+  .logo h1 {
+    font-size: 3rem;
+  }
+  .others a {
+    font-size: 1.6rem;
+  }
+  .others nav {
+    gap: 1.5rem;
+  }
 }
 
 @media (max-width: 1024px) {
@@ -113,13 +135,23 @@ header {
     height: 70px;
   }
 
-  .logo img { width: 50px; }
-  .logo h1 { font-size: 2rem; }
+  .logo img {
+    width: 50px;
+  }
+  .logo h1 {
+    font-size: 2rem;
+  }
 
-  .others nav { gap: 1rem; }
-  .auth-buttons { gap: 1rem; }
+  .others nav {
+    gap: 1rem;
+  }
+  .auth-buttons {
+    gap: 1rem;
+  }
 
-  .others a { font-size: 1.2rem; }
+  .others a {
+    font-size: 1.2rem;
+  }
 }
 
 @media (max-width: 768px) {
@@ -128,16 +160,28 @@ header {
     height: 60px;
   }
 
-  .logo img { width: 40px; }
-  .logo h1 { font-size: 1.5rem; }
+  .logo img {
+    width: 40px;
+  }
+  .logo h1 {
+    font-size: 1.5rem;
+  }
 
   .hamburger {
     display: flex;
   }
 
-  .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 6px); background-color: #ff3333; }
-  .hamburger.active span:nth-child(2) { opacity: 0; }
-  .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -6px); background-color: #ff3333; }
+  .hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 6px);
+    background-color: #ff3333;
+  }
+  .hamburger.active span:nth-child(2) {
+    opacity: 0;
+  }
+  .hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -6px);
+    background-color: #ff3333;
+  }
 
   .others {
     position: fixed;
@@ -151,7 +195,6 @@ header {
     justify-content: center;
     transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     z-index: 1001;
-    border-left: 1px solid #1d9ab9;
     box-shadow: -5px 0 20px rgba(0, 0, 0, 0.8);
   }
 

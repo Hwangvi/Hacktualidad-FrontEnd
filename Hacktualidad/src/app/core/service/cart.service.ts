@@ -19,10 +19,12 @@ export class CartService {
   }
 
   getCart(): Observable<Cart> {
-    return this.http
-      .get<Cart>(this.apiUrl, { withCredentials: true })
-      .pipe(tap((cart) => this.cartSubject.next(cart)));
-  }
+  const urlNoCache = `${this.apiUrl}?t=${new Date().getTime()}`;
+
+  return this.http
+    .get<Cart>(urlNoCache, { withCredentials: true })
+    .pipe(tap((cart) => this.cartSubject.next(cart)));
+}
 
   addToCart(productId: number): Observable<Cart> {
     const url = `${this.apiUrl}/add/${productId}`;

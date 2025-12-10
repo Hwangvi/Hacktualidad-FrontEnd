@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { TematicasComponent } from './tematicas/tematicas.component';
+import { TematicasComponent } from './affair/affair.component';
 
 @Component({
   selector: 'app-forum',

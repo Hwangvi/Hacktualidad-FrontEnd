@@ -18,7 +18,11 @@
     <button type="submit">Entrar</button>
 
     <div class="register-link">
-      ¿Aún no te has registrado? <a routerLink="/registro">¡Haz click aquí!</a>
+      ¿Aún no te has registrado? <a routerLink="/register">¡Haz click aquí!</a>
+    </div>
+
+    <div class="back-to-landing">
+      <a routerLink="/landingHome">Volver al menú principal</a>
     </div>
 
     <div *ngIf="errorMessage" class="error-message">

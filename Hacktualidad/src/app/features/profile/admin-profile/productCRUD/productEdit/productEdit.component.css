@@ -265,6 +265,74 @@ select option {
   font-size: 1em;
 }
 
+@media (max-width: 768px) {
+
+  :host {
+    align-items: flex-start;
+    padding-top: 10px;
+  }
+
+  .edit-form-card {
+    margin-top: 90px;
+    margin-bottom: 40px;
+    padding: 25px 15px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .glitch {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    word-break: break-word;
+  }
+
+  input,
+  textarea,
+  select {
+    font-size: 16px;
+    padding: 10px;
+    width: 90%;
+  }
+
+  .file-upload-wrapper {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 15px;
+  }
+
+  .btn-file-upload {
+    width: 100%;
+    text-align: center;
+    box-sizing: border-box;
+    padding: 15px;
+  }
+
+  .image-preview {
+    margin: 0 auto;
+    width: 100px;
+    height: 100px;
+  }
+
+  .form-actions {
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+  }
+
+  .btn-cancel,
+  .btn-save {
+    width: 100%;
+    padding: 15px;
+    font-size: 1rem;
+  }
+
+  .toggle-switch {
+    justify-content: space-between;
+    width: 100%;
+    padding: 5px 0;
+  }
+}
+
 @keyframes flicker {
   0%, 18%, 22%, 25%, 53%, 57%, 100% {
     text-shadow:

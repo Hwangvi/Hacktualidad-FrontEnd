@@ -18,7 +18,7 @@ export class App {
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd)
     ).subscribe((event: any) => {
-      if (event.urlAfterRedirects === '/login' || event.urlAfterRedirects === '/registro' || event.urlAfterRedirects === '/') {
+      if (event.urlAfterRedirects === '/login' || event.urlAfterRedirects === '/register' || event.urlAfterRedirects === '/') {
         this.show_header_footer = false;
       } else {
         this.show_header_footer = true;

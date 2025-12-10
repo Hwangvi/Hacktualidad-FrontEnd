@@ -35,7 +35,7 @@ export class ProductListComponent implements OnInit {
   onDeleteProduct(id: number): void {
   Swal.fire({
     title: '¿EJECUTAR BORRADO?',
-    text: "Esta acción eliminará los datos permanentemente. ¿Proceder?",
+    text: "Esta acción eliminará el producto permanentemente. ¿Proceder?",
     icon: 'warning',
     showCancelButton: true,
     confirmButtonText: 'SÍ, BORRAR',
@@ -50,7 +50,6 @@ export class ProductListComponent implements OnInit {
     if (result.isConfirmed) {
       this.productService.deleteProduct(id).subscribe({
         next: () => {
-          // ESTILO HACKER ÉXITO
           Swal.fire({
             title: '¡ELIMINADO!',
             text: 'El archivo ha sido purgado del sistema.',

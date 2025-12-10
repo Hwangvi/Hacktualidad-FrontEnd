@@ -13,7 +13,7 @@ import { CategoryColorPipe } from '../../../../../shared/pipes/categoryColor.pip
   standalone: true,
   imports: [CommonModule, RouterModule, CategoryColorPipe],
   templateUrl: './categoryList.component.html',
-  styleUrls: ['./categoryList.component.css']
+  styleUrls: ['./categoryList.component.css'],
 })
 export class CategoryListComponent implements OnInit {
   private refreshTrigger$ = new Subject<void>();
@@ -32,15 +32,19 @@ export class CategoryListComponent implements OnInit {
     this.refreshTrigger$.next();
   }
 
-
   onDeleteCategory(id: number): void {
     Swal.fire({
       title: '¿Estás seguro?',
-      text: "Esta acción no se puede revertir.",
+      text: 'Esta acción no se puede revertir. ¿Desea borrar esta categoría?',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonText: 'Sí, ¡bórralo!',
       cancelButtonText: 'Cancelar',
+      background: '#141414',
+      color: '#ff3333',
+      iconColor: '#ff3333',
+      confirmButtonColor: '#ff3333',
+      cancelButtonColor: '#333',
     }).then((result) => {
       if (result.isConfirmed) {
         this.categoryService.deleteCategory(id).subscribe({
@@ -48,7 +52,7 @@ export class CategoryListComponent implements OnInit {
             Swal.fire('¡Eliminada!', 'La categoría ha sido borrada.', 'success');
             this.loadCategories();
           },
-          error: () => Swal.fire('Error', 'No se pudo borrar la categoría.', 'error')
+          error: () => Swal.fire('Error', 'No se pudo borrar la categoría.', 'error'),
         });
       }
     });

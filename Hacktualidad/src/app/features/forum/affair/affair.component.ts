@@ -7,8 +7,8 @@ import { Topic } from '../../../shared/interfaces/forum';
 @Component({
   selector: 'app-tematicas',
   imports: [RouterLink, CommonModule],
-  templateUrl: './tematicas.component.html',
-  styleUrls: ['./tematicas.component.css'],
+  templateUrl: './affair.component.html',
+  styleUrls: ['./affair.component.css'],
 })
 export class TematicasComponent implements OnInit {
   topics: Topic[] = [];

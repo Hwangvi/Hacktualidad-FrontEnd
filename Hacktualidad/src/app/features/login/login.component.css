@@ -82,6 +82,7 @@ button:hover {
 .register-link {
   margin-top: 20px;
   color: #0f0;
+  margin-bottom: 20px;
 }
 
 .register-link a {
@@ -98,4 +99,10 @@ button:hover {
   border: 1px solid #c62828;
   border-radius: 8px;
   font-weight: 600;
+}
+.back-to-landing a {
+  margin-top: 30px;
+  color: #0f0;
+  text-decoration: underline;
+  cursor: pointer;
 }
