@@ -29,7 +29,7 @@ import { TopicModerationListComponent } from './features/forum/topicModerationLi
 import { PostEditComponent } from './features/forum/postEdit/postEdit.component';
 import { TopicModerationDetailComponent } from './features/profile/admin-profile/topicCRUD/topicModeration/topicModerationDetail.component';
 import { CartComponent } from './features/cart/cart.component';
-import { CommentModerationComponent } from './features/forum/commentModeration/commentModeration.component';
+import { CommentModerationComponent } from './features/forum/commentModeration_temp/commentModeration.component';
 import { LandingHomeComponent } from './shared/components/landingHome/landingHome.component';
 
 export const routes: Routes = [
