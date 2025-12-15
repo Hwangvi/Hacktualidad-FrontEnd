@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Category } from '../../shared/interfaces/Category';
+import { environment } from '../../../enviroments/enviroment';
 
 export interface CategoryCreateUpdate {
   name: string;
@@ -12,7 +13,7 @@ export interface CategoryCreateUpdate {
   providedIn: 'root',
 })
 export class CategoryService {
-  private apiUrl = 'http://localhost:8080/api/categories';
+  private apiUrl = `${environment.apiUrl}/categories`;
 
   constructor(private http: HttpClient) {}
 
